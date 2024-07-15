@@ -1,0 +1,64 @@
+{
+    "switchLanguagesMyVoise":[
+        {
+            "locatorName":"English",
+            "expectedUrl":"https://dev.teleguard.com/en/myvoice"
+        },
+    
+        {
+            "locatorName":"Deutsch",
+            "expectedUrl":"https://dev.teleguard.com/de/myvoice"
+        },
+        {
+            "locatorName":"Français",
+            "expectedUrl":"https://dev.teleguard.com/fr/myvoice"
+        },
+        {
+            "locatorName":"Italiano",
+            "expectedUrl":"https://dev.teleguard.com/it/myvoice"
+        },
+        {
+            "locatorName":"Español",
+            "expectedUrl":"https://dev.teleguard.com/es/myvoice"
+        },
+        {
+            "locatorName":"Русский",
+            "expectedUrl":"https://dev.teleguard.com/ru/myvoice"
+        },
+        {
+            "locatorName":"Українська",
+            "expectedUrl":"https://dev.teleguard.com/uk/myvoice"
+        
+        }
+    
+    ],
+    "linksShopMyVoise":[
+        {
+            "link":"ios app",
+            "expectedUrl":"https://apps.apple.com/de/app/myvoice-world/id6474183731"
+        },
+        {
+            "link":"android app",
+            "expectedUrl":"https://play.google.com/store/apps/details?id=ch.swisscows.myvoice"
+        }
+    
+
+    
+    ],
+    "linksContentShopMyVoise":[
+        {
+            "name": "ios app",
+            "index":1,
+            "expectedUrl":"https://apps.apple.com/de/app/myvoice-world/id6474183731"
+        },
+        {
+            "name": "android app",
+            "index":1,
+            "expectedUrl":"https://play.google.com/store/apps/details?id=ch.swisscows.myvoice"
+        }
+    
+
+    
+    ]
+
+}

@@ -11,7 +11,7 @@ const { defineConfig, devices } = require('@playwright/test');
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './e2e',
+  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,11 +24,15 @@ module.exports = defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    video: "retain-on-failure",
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    trace: "on-first-retry",
+
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    
   },
 
   /* Configure projects for major browsers */
@@ -43,12 +47,13 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
 
-    
-    //{
-    //name: 'webkit',
-    //use: { ...devices['Desktop Safari'] },
-    //},
-    
+
+    /*
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+    */
 
     /* Test against mobile viewports. */
     // {
@@ -65,10 +70,10 @@ module.exports = defineConfig({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
-     {
-       name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-     },
+    // {
+    //   name: 'Google Chrome',
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    // },
   ],
 
   /* Run your local dev server before starting the tests */
@@ -78,4 +83,3 @@ module.exports = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-

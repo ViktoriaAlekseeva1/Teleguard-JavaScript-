@@ -1,0 +1,35 @@
+{
+    "switchLanguages":[
+        {
+            "locatorName":"English",
+            "expectedUrl":"https://dev.teleguard.com/en/beta-testing"
+        },
+    
+        {
+            "locatorName":"Deutsch",
+            "expectedUrl":"https://dev.teleguard.com/de/beta-testing"
+        },
+        {
+            "locatorName":"Français",
+            "expectedUrl":"https://dev.teleguard.com/fr/beta-testing"
+        },
+        {
+            "locatorName":"Italiano",
+            "expectedUrl":"https://dev.teleguard.com/it/beta-testing"
+        },
+        {
+            "locatorName":"Español",
+            "expectedUrl":"https://dev.teleguard.com/es/beta-testing"
+        },
+        {
+            "locatorName":"Русский",
+            "expectedUrl":"https://dev.teleguard.com/ru/beta-testing"
+        },
+        {
+            "locatorName":"Українська",
+            "expectedUrl":"https://dev.teleguard.com/uk/beta-testing"
+        
+        }
+    
+    ]
+}

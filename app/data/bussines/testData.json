@@ -1,0 +1,101 @@
+{
+"headerLinks":[
+    {
+        "locatorName":"Prices",
+        "expectedUrl":"https://dev.teleguard.com/en/business#prices"
+    },
+    {
+        "locatorName":"PROCEDURE",
+        "expectedUrl":"https://dev.teleguard.com/en/business#procedure" 
+    },
+    {
+        "locatorName":"Contacts",
+        "expectedUrl":"https://dev.teleguard.com/en/business#contacts"
+    }
+    
+],
+"switchLanguages":[
+    {
+        "locatorName":"English",
+        "expectedUrl":"https://dev.teleguard.com/en/business"
+    },
+
+    {
+        "locatorName":"Deutsch",
+        "expectedUrl":"https://dev.teleguard.com/de/business"
+    },
+    {
+        "locatorName":"Français",
+        "expectedUrl":"https://dev.teleguard.com/fr/business"
+    },
+    {
+        "locatorName":"Italiano",
+        "expectedUrl":"https://dev.teleguard.com/it/business"
+    },
+    {
+        "locatorName":"Español",
+        "expectedUrl":"https://dev.teleguard.com/es/business"
+    },
+    {
+        "locatorName":"Русский",
+        "expectedUrl":"https://dev.teleguard.com/ru/business"
+    },
+    {
+        "locatorName":"Українська",
+        "expectedUrl":"https://dev.teleguard.com/uk/business"
+    
+    }
+
+],
+"socialLinksHeader":[
+
+    {
+        "iconName":"Twitter",
+        "expectedUrl":"https://twitter.com/Teleguard_"
+    },
+
+    {
+        "iconName":"Facebook",
+        "expectedUrl":"https://www.facebook.com/teleguardapp"
+    },
+    {
+        "iconName":"instagram",
+        "expectedUrl":"https://www.instagram.com/teleguard_official/"
+    },
+    {
+        "iconName":"VK",
+        "expectedUrl":"https://vk.com/teleguard"
+    },
+    {
+        "iconName":"LinkedIn",
+        "expectedUrl":"https://www.linkedin.com/company/teleguard/"
+    }
+],
+"linksFooter":[
+    {
+        "locatorName":"Imprint",
+        "expectedUrl":"https://dev.teleguard.com/en/imprint"
+    },
+    {
+        "locatorName":"Privacy Policy",
+        "expectedUrl":"https://dev.teleguard.com/en/privacy"
+    },
+    {
+        "locatorName":"Terms of use",
+        "expectedUrl":"https://dev.teleguard.com/en/termsofuse"
+    },
+    {
+        "locatorName":"Press",
+        "expectedUrl":"https://dev.teleguard.com/en/press"
+    },
+    {
+        "locatorName":"Beta Testing",
+        "expectedUrl":"https://dev.teleguard.com/en/beta-testing"
+    }
+
+]
+
+}
+
+
+   

@@ -1,0 +1,49 @@
+{
+    "socialLinksFooter":[
+
+        {
+            "index":0,
+            "expectedUrl":"https://x.com/Teleguard_"
+        },
+    
+        {
+            "index":1,
+            "expectedUrl":"https://www.facebook.com/teleguardapp"
+        },
+        {
+            "index":2,
+            "expectedUrl":"https://www.instagram.com/teleguard_official/"
+        },
+
+        {
+            "index":4,
+            "expectedUrl":"https://www.linkedin.com/company/teleguard/"
+        }
+    ],
+    "footerLinks":[
+
+        {
+            "link":"Imprint",
+            "expectedUrl":"https://dev.teleguard.com/en/imprint"
+        },
+    
+        {
+            "link":"Privacy Policy",
+            "expectedUrl":"https://dev.teleguard.com/en/privacy"
+        },
+        {
+            "link":"Terms of use",
+            "expectedUrl":"https://dev.teleguard.com/en/termsofuse"
+        },
+
+        {
+            "link":"Press",
+            "expectedUrl":"https://dev.teleguard.com/en/press"
+        },
+        {
+            "link":"Beta Testing",
+            "expectedUrl":"https://dev.teleguard.com/en/beta-testing"
+        }
+    ]
+    
+}
