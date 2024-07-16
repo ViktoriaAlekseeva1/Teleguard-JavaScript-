@@ -1,11 +1,8 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-const testData = JSON.parse(JSON.stringify(
-    require("../app/data/bussines/testData.json")
-));
-const testDataFooter = JSON.parse(JSON.stringify(
-  require("../components/testDataFooter.json")
-));
+import testData from"../app/data/bussines/testData.json"
+import testDataFooter  from"../components/testDataFooter.json"
+
 for (const {locatorName, expectedUrl} of testData.headerLinks) {
     test(`Check click link ${locatorName} in header on Business page` , async ({ page }) => {//links header
        const app = new App(page);

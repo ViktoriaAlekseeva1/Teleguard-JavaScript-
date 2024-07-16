@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-const testDataHeader = JSON.parse(JSON.stringify(
-    require("../components/testDataHeader.json")
-));
+import testDataHeader from "../components/testDataHeader.json"
+
 
 
 for (const {locatorName, expectedUrl} of testDataHeader.switchLanguages) {
