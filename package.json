@@ -9,10 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  
   "devDependencies": {
-    "@types/node": "^20.11.24",
-    "mocha": "^10.3.0"
+    "@types/node": "^20.11.24"
   },
   "dependencies": {
     "@playwright/test": "^1.44.0"
