@@ -73,23 +73,23 @@
 ],
 "linksFooter":[
     {
-        "locatorName":"Imprint",
+        "locatorNameBussines":"Imprint",
         "expectedUrl":"https://dev.teleguard.com/en/imprint"
     },
     {
-        "locatorName":"Privacy Policy",
+        "locatorNameBussines":"Privacy Policy",
         "expectedUrl":"https://dev.teleguard.com/en/privacy"
     },
     {
-        "locatorName":"Terms of use",
+        "locatorNameBussines":"Terms of use",
         "expectedUrl":"https://dev.teleguard.com/en/termsofuse"
     },
     {
-        "locatorName":"Press",
+        "locatorNameBussines":"Press",
         "expectedUrl":"https://dev.teleguard.com/en/press"
     },
     {
-        "locatorName":"Beta Testing",
+        "locatorNameBussines":"Beta Testing",
         "expectedUrl":"https://dev.teleguard.com/en/beta-testing"
     }
 

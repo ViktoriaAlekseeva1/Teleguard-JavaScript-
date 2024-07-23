@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDataMyVoiseHeader from '../app/data/myvoise/testDataMyVoiseHeader.json'
-import testDataFooter from "../components/testDataFooter.json"
+import testDataMyVoiseHeader from '../app/data/myvoise/testDataMyVoiseHeader.json' assert { type: 'json' };;
+import testDataFooter from '../components/testDataFooter.json' assert { type: 'json' };;
 
 for (const {locatorName, expectedUrl} of testDataMyVoiseHeader.switchLanguagesMyVoise) {
     test(`Check switch languages ${locatorName} in header Home page My voise`, async ({ page }) => {//languages
@@ -45,12 +45,13 @@ for (const { name, index, expectedUrl} of testDataMyVoiseHeader.linksContentShop
       await expect(newPage).toHaveURL(expectedUrl);
     });
 }
-for (const {locatorName, expectedUrl} of testDataFooter.footerLinks) {
-  test(`Check links footer ${locatorName} in MyVoice `, async ({ page }) => {//links footer
+
+for (const {link, expectedUrl} of testDataFooter.footerLinks) {
+  test(`Check footer links ${link} MyVoice page`, async ({ page }) => {          //links footer
     const app = new App(page);
     //Actions
     await app.myVoice.openMyVoise();
-    await app.myVoice.footer.clickLinkFooter(locatorName);
+    await app.myVoice.footer.clickLinkFooter(link);
 
     //Assert
     await expect(app.myVoice.page).toHaveURL(expectedUrl);
@@ -58,6 +59,8 @@ for (const {locatorName, expectedUrl} of testDataFooter.footerLinks) {
   });
   
 }
+
+
 
 for (const {index, expectedUrl} of testDataFooter.socialLinksFooter) {//no working
   test(`Check links socialnetwork ${index} in footer in MyVoice page`, async ({ page }) => { //footer social network

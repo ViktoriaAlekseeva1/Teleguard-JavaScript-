@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDataHeader from "../components/testDataHeader.json"
+import testDataHeader from '../components/testDataHeader.json' assert { type: 'json' };;
 
 
 

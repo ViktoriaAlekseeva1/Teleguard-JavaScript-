@@ -1,4 +1,5 @@
-
+import { test, expect } from '@playwright/test';
+import fs from'fs';
 export default class Footer{
     constructor(page) {
         this.page = page;

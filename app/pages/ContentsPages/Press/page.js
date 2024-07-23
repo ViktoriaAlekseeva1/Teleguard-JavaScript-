@@ -1,4 +1,4 @@
-const { expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 import Header from "../../../../components/Header";
 import Footer from "../../../../components/Footer";
 

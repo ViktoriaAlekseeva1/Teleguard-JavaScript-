@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testData from"../app/data/bussines/testData.json"
-import testDataFooter  from"../components/testDataFooter.json"
+import testData from '../app/data/bussines/testData.json' assert { type: 'json' };;
+import testDataFooter  from '../components/testDataFooter.json' assert { type: 'json' };;
 
 for (const {locatorName, expectedUrl} of testData.headerLinks) {
     test(`Check click link ${locatorName} in header on Business page` , async ({ page }) => {//links header
@@ -30,12 +30,12 @@ for (const {locatorName, expectedUrl} of testData.switchLanguages) {
     
   }
   
-  for (const {locatorName, expectedUrl} of testData.linksFooter) {
-    test(`Check links ${locatorName} in footer in Business page`, async ({ page }) => {//links footer
+  for (const {locatorNameBussines, expectedUrl} of testData.linksFooter) {
+    test(`Check links ${locatorNameBussines} in footer in Business page`, async ({ page }) => {//links footer
       const app = new App(page);
       //Actions
       await app.business.openBusiness();
-      await app.business.footer.clickLinkFooter(locatorName)
+      await app.business.footer.clickLinkFooter(locatorNameBussines)
   
       //Assert
       await expect(app.business.page).toHaveURL(expectedUrl);
