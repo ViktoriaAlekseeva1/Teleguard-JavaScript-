@@ -12,9 +12,9 @@ test('Check link Teleguard on page TermsOfUse', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.termsOfUse.openTermsOfUse();
-    const newPage = await app.termsOfUse.clickLinkTeleguard();
+    await app.termsOfUse.clickLinkTeleguard();
     //Assert
-    await expect(newPage).not.toHaveURL('https://dev.teleguard.com/en/termsofuse');
+    await expect(page).not.toHaveURL('https://dev.teleguard.com/en/termsofuse');
 });
 test ('Click link Info on page TermsOfUse', async ({ page }) => {
     const app = new App(page);

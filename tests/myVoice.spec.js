@@ -62,7 +62,7 @@ for (const {link, expectedUrl} of testDataFooter.footerLinks) {
 
 
 
-for (const {index, expectedUrl} of testDataFooter.socialLinksFooter) {//no working
+for (const {index, expectedUrl} of testDataFooter.socialLinksFooter) {
   test(`Check links socialnetwork ${index} in footer in MyVoice page`, async ({ page }) => { //footer social network
     const app = new App(page);
     //Actions

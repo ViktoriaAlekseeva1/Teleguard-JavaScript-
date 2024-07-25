@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDataHeader from '../components/testDataHeader.json' assert { type: 'json' };;
+import testDataBetaTestingHeader from '../app/data/betaTesting/testDataBetaTestingHeader.json' assert { type: 'json' };
 
 
 
-for (const {locatorName, expectedUrl} of testDataHeader.switchLanguages) {
+for (const {locatorName, expectedUrl} of testDataBetaTestingHeader.switchLanguages) {
     test(`Check switch languages ${locatorName} in header BetaTesting page`, async ({ page }) => {//languages
       const app = new App(page);
       //Actions
@@ -29,7 +29,7 @@ test('Contact us send form page Beta Testing ', async ({ page }) => {
     await app.betaTesting.form.fieldNumberOfTeleguard.pressSequentially('DQ2SABC$Q');
     await app.betaTesting.form.fieldFullName.pressSequentially('Full Name Test');
     await app.betaTesting.form.fieldComment.pressSequentially('TEST');
-    await app.betaTesting.form.agreementCheckboxBetaTesting.check();
+    await app.betaTesting.form.agreementCheckboxBetaTesting.click();
     await app.betaTesting.form.sendButtonBetaTesting.click();
     //Assert
     

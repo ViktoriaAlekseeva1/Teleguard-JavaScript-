@@ -14,6 +14,8 @@ export default class Home {
         //Locators
         this.headingSuccess = this.page.getByRole('heading', { name: 'Success!' })
         this.buttonStartPageSuccess = this.page.getByRole('link', { name: 'start page' })
+        this.images = this.page.locator('.home image')
+        this.linkSwisscowsAG = this.page.getByRole('link', { name: 'Swisscows AG' })
 
     }
     async open() {
@@ -110,6 +112,28 @@ export default class Home {
         await this.page.locator('div').filter({ hasText: '/^Android$/' }).click();
         await this.page.locator('li').filter({ hasText: 'Windows' }).click();
         await this.page.locator('div').filter({ hasText: '/^Windows$/' }).click();
+    }
+    async expectPageToHaveScreenshot(testInfo) {
+    
+        testInfo.snapshotSuffix = "";
+        const imageElements = await this.images.all();
+        for (const image of imageElements) {
+          await image.scrollIntoViewIfNeeded();
+          await expect(image).not.toHaveJSProperty("naturalWidth", 0);
+        }
+        await expect(this.page).toHaveScreenshot(`${testInfo.title}.png`, {
+          fullPage: true,
+        });
+    }
+    //linkSwisscowsAG
+    async clickLinkSwisscowsAG(){
+        const [newPage] = await Promise.all([
+            this.page.context().waitForEvent('page'),
+            this.linkSwisscowsAG.click()
+        ]);
+        await newPage.waitForLoadState('domcontentloaded');
+        return newPage;
+
     }
 
 }

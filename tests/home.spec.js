@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDatalHeader from '../components/testDataHeader.json' assert { type: 'json' };;
-import testDataFooter from '../components/testDataFooter.json' assert { type: 'json' };;
+import testDataHeader from '../components/testDataHeader.json' assert { type: 'json' };
+import testDataFooter from '../components/testDataFooter.json' assert { type: 'json' };
 
-for (const {link, expectedUrl} of testDatalHeader.headerLinks) {
+for (const {link, expectedUrl} of testDataHeader.headerLinks) {
     test(`Check click link ${link} in header on Home page` , async ({ page }) => {//links header
        const app = new App(page);
        //Actions
@@ -15,7 +15,7 @@ for (const {link, expectedUrl} of testDatalHeader.headerLinks) {
    });
 
 };
-for (const {locatorName, expectedUrl} of testDatalHeader.switchLanguages) {
+for (const {locatorName, expectedUrl} of testDataHeader.switchLanguages) {
     test(`Check switch languages ${locatorName} in header Home page`, async ({ page }) => {//languages
       const app = new App(page);
       //Actions
@@ -28,7 +28,7 @@ for (const {locatorName, expectedUrl} of testDatalHeader.switchLanguages) {
     });
     
 }
-for (const {index, expectedUrl} of testDatalHeader.headerLinksSocialNetwork) {
+for (const {index, expectedUrl} of testDataHeader.headerLinksSocialNetwork) {
     test(`Check click link ${index} in header SocialNetwork on Home page` , async ({ page }) => {//header social network
        const app = new App(page);
        //Actions
@@ -41,18 +41,6 @@ for (const {index, expectedUrl} of testDatalHeader.headerLinksSocialNetwork) {
 
 };
 
-//Header 2 links shops and beta
-for (const {id, expectedUrl} of testDatalHeader.headerAppLinks) {//no working
-    test(`Check click link ${id} in header links shops on Home page` , async ({ page }) => {//Header 2 links shops
-       const app = new App(page);
-       //Actions
-       await app.home.open();
-       const newPage = await app.home.header.linksShops(id)
-       //Assert
-       await expect(newPage).toHaveURL(expectedUrl);
-   });
-
-};
 test('LinkAppStore', async ({ page }) => {
     const app = new App(page);
     await app.home.open();
@@ -277,7 +265,7 @@ test('Contact us send form ', async ({ page }) => {
     await app.home.form.nameField.pressSequentially('test');
     await app.home.form.emailField.pressSequentially('test@test.com');
     await app.home.form.commentField.pressSequentially('TEST');
-    await app.home.form.agreementCheckbox.check();
+    await app.home.form.agreementCheckbox.click();
     await app.home.form.sendButton.click();
 
     //Assert
@@ -299,7 +287,7 @@ test('Contact us send form 2 ', async ({ page }) => {
     await app.home.form.nameField.pressSequentially('test android');
     await app.home.form.emailField.pressSequentially('test@test.com');
     await app.home.form.commentField.pressSequentially('TEST android');
-    await app.home.form.agreementCheckbox.check();
+    await app.home.form.agreementCheckbox.click();
     await app.home.form.sendButton.click();
 
     //Assert
@@ -322,7 +310,7 @@ test('Contact us send form 3 ', async ({ page }) => {
     await app.home.form.nameField.pressSequentially('test windows');
     await app.home.form.emailField.pressSequentially('test@test.com');
     await app.home.form.commentField.pressSequentially('TEST windows');
-    await app.home.form.agreementCheckbox.check();
+    await app.home.form.agreementCheckbox.click();
     await app.home.form.sendButton.click();
 
     //Assert
@@ -361,35 +349,43 @@ for (const {link, expectedUrl} of testDataFooter.footerLinks) {
 test('link Swisscows AG', async ({ page }) => {
     const app = new App(page);
     await app.home.open();
-    await app.home.linkSwisscowsAG();
+    const newPage = await app.home.clickLinkSwisscowsAG();
+    //Assert
+    await expect(newPage).not.toHaveURL('https://company.swisscows.com/en');
+
+    /*
     const popupPromise = page.waitForEvent('popup');
     const newPage = await popupPromise;
     await newPage.waitForLoadState();
     const currentURL = page.url();
     const newPageURL = newPage.url('https://company.swisscows.com/en');
     expect(currentURL).not.toEqual(newPageURL);
+    */
+
+});
+for(const {id, expectedUrl} of testDataHeader.headerAppLinks) {
+test(`Check click link ${id}store in header on Home page` , async ({ page }) => {//Header 2 links shops
+    const app = new App(page);
+    //Actions
+    await app.home.open();
+    const newPage = await app.home.header.clickStoreLink(id);
+    
+    
+    //Assert
+    await expect(newPage).toHaveURL(expectedUrl);
+});
+}
+test('Check disaine home page', async ({ page }, testInfo) => {
+    const app = new App(page);
+    await app.home.open();
+    //Assert
+    await app.home.expectPageToHaveScreenshot(testInfo)
 
 });
 
 
 
 
-
-
-
-    
-    
-    /*
-    const currentURL = page.url();
-    const expectedURL  = 'https://dev.teleguard.com/en/contact?succeed=true';
-    const successHeader = page.locator('h1:has-text("Success!")');//('heading', { name: 'Success!' });
-    const buttonStartPage = page.locator('link', { name: 'start page' });
-    
-    expect(successHeader).toBeVisible();
-    expect(buttonStartPage).toBeVisible();
-    expect(currentURL).not.toEqual(expectedURL);
-});
-*/
 
 
 

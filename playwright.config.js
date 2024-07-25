@@ -12,6 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  snapshotDir: "./tests/snapshots",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -30,6 +31,14 @@ export default defineConfig({
 
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
+  },
+  expect: {
+    toHaveScreenshot: {
+      threshold: 0.35,
+      maxDiffPixelRatio: 0.04,
+      maxDiffPixels: 1000,
+    },
+    timeout: 15 * 1000,
   },
 
   /* Configure projects for major browsers */

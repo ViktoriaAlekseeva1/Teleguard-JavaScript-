@@ -31,7 +31,7 @@ export default class Form{
         await page.getByPlaceholder('Number of TeleGuard contacts').click();
         await page.getByPlaceholder('Full Name').click();
         await page.getByPlaceholder('Comment').click();
-        await page.getByLabel('I agree that my data will be').check();
+        await page.getByLabel('I agree that my data will be').click();
         await page.getByRole('button', { name: 'send' }).click();
     
     }

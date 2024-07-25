@@ -83,11 +83,11 @@
     ],
     "headerAppLinks":[
         {
-            "id":"app-ios",
-            "expectedUrl":"https://apps.apple.com/us/app/teleguard/"
+            "id":"ios",
+            "expectedUrl":"https://apps.apple.com/us/app/teleguard/id1505636751"
         },
         {
-            "id":"android app",
+            "id":"android",
             "expectedUrl":"https://play.google.com/store/apps/details?id=ch.swisscows.messenger.teleguardapp" 
         }
     ],

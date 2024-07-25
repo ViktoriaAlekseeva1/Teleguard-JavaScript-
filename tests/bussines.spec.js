@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testData from '../app/data/bussines/testData.json' assert { type: 'json' };;
-import testDataFooter  from '../components/testDataFooter.json' assert { type: 'json' };;
+import testData from '../app/data/bussines/testData.json' assert { type: 'json' };
+
 
 for (const {locatorName, expectedUrl} of testData.headerLinks) {
     test(`Check click link ${locatorName} in header on Business page` , async ({ page }) => {//links header
@@ -43,7 +43,7 @@ for (const {locatorName, expectedUrl} of testData.switchLanguages) {
     });
     
   }
-  for (const {index, expectedUrl} of testDataFooter.socialLinksFooter) {//no working
+  for (const {index, expectedUrl} of testData.socialLinksFooter) {//no working
     test(`Check links socialnetwork ${index} in footer in Business page`, async ({ page }) => { //footer social network
       const app = new App(page);
       //Actions
@@ -56,17 +56,3 @@ for (const {locatorName, expectedUrl} of testData.switchLanguages) {
     });
     
   }
-  /*
-  for (const {index, expectedUrl} of testDataHeader.headerLinksSocialNetwork) {
-      test(`Check click link ${index} in header SocialNetwork on Home page` , async ({ page }) => {//header social network
-         const app = new App(page);
-         //Actions
-         await app.home.open();
-         const newPage = await app.home.header.clickLinkHeaderSocialNetwork(index)
-  
-         //Assert
-         await expect(newPage).toHaveURL(expectedUrl);
-     });
-  
-  };
-  */

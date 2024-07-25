@@ -31,7 +31,7 @@ export default class TermsOfUse {
 
     }
     async clickLinkTeleguard() {
-        await this.linkTeleguardTermsOfUse.click();
+        await this.linkTeleguardTermsOfUse.click()
     }
     async clickLinkInfoTermsOfUsePage(){
         await this.linkInfoTermOfUse.click();

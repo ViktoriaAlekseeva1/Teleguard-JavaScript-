@@ -2,8 +2,8 @@ export default class Footer{
     constructor(page) {
         this.page = page;
         this.allLinks = (name) => this.page.getByRole('link', { name: name })
-        this.allLinksNetworkFooter = (index) => this.page.getByRole('link', { icon: index }).nth(index)
-        //this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links').nth(index)
+        
+        this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links > a').nth(index)
 
     //Locators
     
@@ -32,9 +32,15 @@ async clickLinkFooter(name) {
 async clickLinkFooterSocialNetwork(icon) {
     const [newPage] = await Promise.all([
         this.page.context().waitForEvent("page"),
+        await this.scrollToBottom(),
         await this.allLinksNetworkFooter(icon).click()
         ]);
         await newPage.waitForLoadState("domcontentloaded");
         return newPage;
+}
+async scrollToBottom() {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
 }
 }

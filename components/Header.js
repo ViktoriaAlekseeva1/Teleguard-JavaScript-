@@ -6,9 +6,8 @@ export default class Header{
 
         this.allLinksNetwork = (index) => this.page.locator('.social-links > a').nth(index)
         this.allLinks = (name) => this.page.getByRole('link', { name: name, exact: true })
+        this.storeLink = (id) => this.page.locator(`#app-${id}`)
 
-        
-        //this.allLinksHeader2 = (id) => this.page.locator('.main-banner > .row').nth(id)
         this.allLanguages = (name) => this.page.getByRole('link', { name: name }).first()
         //Locators
         this.linkBenefits = this.page.locator('//*[@id="menu"]/li[1]/a')
@@ -64,24 +63,7 @@ export default class Header{
     async switchLanguages(name) { 
         await this.allLanguages(name).click()
     }
-    allLinksHeader2(id) {
-        return this.page.locator('#app-ios').nth(id);
-    }
 
-    
-
-
-   //Header 2 links shops and beta
-   async linksShops(id) {//no working
-    const [newPage] = await Promise.all([
-        this.page.context().waitForEvent("page"),
-        this.allLinksHeader2(id).click()
-      ]);
-      await newPage.waitForLoadState("domcontentloaded");
-      return newPage;
-
-}
-    
     async clickLinkHeaderSocialNetwork(iconName) {
         const [newPage] = await Promise.all([
             this.page.context().waitForEvent("page"),
@@ -91,6 +73,18 @@ export default class Header{
           return newPage;
   
     }
+    async clickStoreLink(id) {
+        const [newPage] = await Promise.all([
+            this.page.context().waitForEvent("page"),
+            await this.storeLink(id).click()
+          ]);
+          await newPage.waitForLoadState("domcontentloaded");
+          return newPage;
+        
+    }
+
+
+
     apkButtonHeader = async() => {
         await this.page.getByRole('link', { name: 'Download APK file' }).first().click();
         const downloadPromise = this.page.waitForEvent('download');
@@ -135,7 +129,12 @@ export default class Header{
         const filePath = (await download.path()).toString();
         expect((await fs.promises.stat(filePath)).size).toBeGreaterThan(sizeByte);
     }
+    
 
+
+
+  
 }
+
 
 
