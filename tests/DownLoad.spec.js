@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
+
+
 test('apkButtonHeader', async ({ page }) => {//apkFileHeader
     
     const app = new App(page);
@@ -8,7 +10,7 @@ test('apkButtonHeader', async ({ page }) => {//apkFileHeader
     const apkFile = await app.home.header.apkButtonHeader();
     //Assert
     await app.home.header.expectFileDownloadName(apkFile, "teleguard-latest.apk");
-    test.setTimeout(300000);
+    
     //await app.home.header.expectFileSizeToBeGreaterThan(apkFile, 500000000000000);
     await apkFile.delete();
 });

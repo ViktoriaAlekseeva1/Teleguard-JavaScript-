@@ -87,26 +87,26 @@ export default class Header{
 
     apkButtonHeader = async() => {
         await this.page.getByRole('link', { name: 'Download APK file' }).first().click();
-        const downloadPromise = this.page.waitForEvent('download');
+        const downloadPromise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click();
         const download = await downloadPromise;
         return download;
     }
     MSWindowsButtonHeader = async() => {
-        const download1Promise = this.page.waitForEvent('download');
+        const download1Promise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).click();
         const download1 = await download1Promise;
         return download1;
     }
     MacOSButtonHeader = async() => {
-        const download2Promise = this.page.waitForEvent('download');
+        const download2Promise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'MacOS' }).click();
         const download2 = await download2Promise;
         return download2;
     }
     LinuxDEB_ButtonHeader = async() => {
         await this.page.getByRole('link', { name: 'Linux', exact: true }).click();
-        const download3Promise = this.page.waitForEvent('download');
+        const download3Promise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click();
         const download3 = await download3Promise;
         return download3;
