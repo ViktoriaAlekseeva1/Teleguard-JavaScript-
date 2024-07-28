@@ -81,38 +81,7 @@ export default class Home {
         }
        
     }
-    //Contact us 
-    async ContactUs () {
-        await this.page.locator('div').filter({ hasText: '/^Please select request category \*$/' }).click();
-        await this.page.getByText('Report a bugPropose an').click();
-        await this.page.locator('li').filter({ hasText: 'Report a bug' }).click();
-        await this.page.locator('div').filter({ hasText: '/^Report a bug$/' }).click();
-        await this.page.locator('div').filter({ hasText: '/^Operating system you use \*$/' }).click();
-        await this.page.getByText('iOSAndroidWindows').click();
-        await this.page.locator('div').filter({ hasText: '/^Android$/' }).click();
-        await this.page.locator('li').filter({ hasText: 'iOS' }).click();
-        await this.page.locator('div').filter({ hasText: '/^iOS$/' }).click();
-        
 
-        await this.page.getByPlaceholder('Your gadget’s model * (').click();
-        await this.page.getByPlaceholder('Your gadget’s model * (').fill('test');
-        await this.page.getByRole('button', { name: 'send' }).click();
-     
-        await this.page.locator('li').filter({ hasText: 'Propose an improvement' }).click();
-        await this.page.locator('div').filter({ hasText: '/^Propose an improvement$/' }).click();
-
-        await this.page.locator('div').filter({ hasText: '/^Android$/' }).click();
-        await this.page.locator('li').filter({ hasText: 'Android' }).click();
-        await this.page.locator('div').filter({ hasText: '/^Android$/' }).click();
-
-        await this.page.locator('li').filter({ hasText: 'Other' }).click();
-        await this.page.locator('div').filter({ hasText: '/^Other$/' }).click();
-        await this.page.locator('div').filter({ hasText: '/^Operating system you use \*$/' }).click();
-        await this.page.getByText('iOSAndroidWindows').click();
-        await this.page.locator('div').filter({ hasText: '/^Android$/' }).click();
-        await this.page.locator('li').filter({ hasText: 'Windows' }).click();
-        await this.page.locator('div').filter({ hasText: '/^Windows$/' }).click();
-    }
     async expectPageToHaveScreenshot(testInfo) {
     
         testInfo.snapshotSuffix = "";
