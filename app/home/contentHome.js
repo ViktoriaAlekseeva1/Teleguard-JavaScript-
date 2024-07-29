@@ -10,18 +10,21 @@ export default class ContentHome {
         await this.page.locator('#benefits').getByRole('link', { name: 'Download APK file' }).click();
         const downloadPromise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click();
+        await new Promise(resolve => setTimeout(resolve, 180000));
         const download = await downloadPromise;
         return download;
     }
     MSWindowsButtonBenefits = async() => {
         const download1Promise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'TeleGuard for WINDOWS *' }).click();
+        await new Promise(resolve => setTimeout(resolve, 180000));
         const download1 = await download1Promise;
         return download1;
     }
     MacOSButtonBenefits = async() => {
         const download2Promise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'TeleGuard for Mac OS' }).click();
+        await new Promise(resolve => setTimeout(resolve, 180000));
         const download2 = await download2Promise;
         return download2;
     }
@@ -29,6 +32,7 @@ export default class ContentHome {
         await this.page.getByRole('link', { name: 'TeleGuard for LINUX' }).click();
         const download3Promise = this.page.waitForEvent('download', { timeout: 300000 });
         await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click();
+        await new Promise(resolve => setTimeout(resolve, 180000));
         const download3 = await download3Promise;
         return download3;
     }

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
 
-test('Check logo on page Imprint', async ({ page }) => {
+test('Check logo on page Privacy', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.privacyPolicy.openPrivacy();

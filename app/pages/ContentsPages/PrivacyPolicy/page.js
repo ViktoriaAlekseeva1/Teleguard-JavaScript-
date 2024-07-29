@@ -11,7 +11,7 @@ export default class PrivacyPolicy {
 
         // Locators
         /*
-        this.privacyLogo = this.page.getByRole('link', { name: 'logo Secure. Encrypted.' })
+        
         this.linkSupportPrivacy1 = this.page.locator('p').filter({ hasText: 'Users can unsubscribe from' }).getByRole('link');
         this.linkSupportPrivacy2 = this.page.locator('p').filter({ hasText: 'We offer you the opportunity' }).getByRole('link');
         this.linkSupportPrivacy3 = this.page.locator('p').filter({ hasText: 'Children\'s privacy You assure' }).getByRole('link');
@@ -19,6 +19,7 @@ export default class PrivacyPolicy {
         this.linkSupportPrivacy4 = this.page.locator('li').filter({ hasText: 'via email to support@' }).getByRole('link');
         this.linkInfoPrivacy = this.page.getByRole('link', { name: 'info@swisscows.com' });
         */
+        this.privacyLogo = this.page.getByRole('link', { name: 'logo Secure. Encrypted.' })
         this.linkSupportPrivacy1 = this.page.locator('p', { hasText: 'Users can unsubscribe from' }).locator('a[href="mailto:support@teleguard.com"]');
         this.linkSupportPrivacy2 = this.page.locator('p', { hasText: 'We offer you the opportunity' }).locator('a[href="mailto:support@teleguard.com"]');
         this.linkSupportPrivacy3 = this.page.locator('p', { hasText: 'Children\'s privacy You assure' }).locator('a[href="mailto:support@teleguard.com"]');

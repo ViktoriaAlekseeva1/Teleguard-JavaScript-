@@ -29,6 +29,7 @@ test('Contact us send form page Beta Testing ', async ({ page }) => {
     await app.betaTesting.form.fieldNumberOfTeleguard.pressSequentially('DQ2SABC$Q');
     await app.betaTesting.form.fieldFullName.pressSequentially('Full Name Test');
     await app.betaTesting.form.fieldComment.pressSequentially('TEST');
+    await app.betaTesting.form.agreementCheckboxBetaTesting.hover();
     await app.betaTesting.form.agreementCheckboxBetaTesting.check(('{ force: true }'));
     await app.betaTesting.form.sendButtonBetaTesting.click();
     //Assert
