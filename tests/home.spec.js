@@ -9,7 +9,6 @@ for (const {link, expectedUrl} of testDataHeader.headerLinks) {
        //Actions
        await app.home.open();
        await app.home.header.clickLinkHeader(link)
-
        //Assert
        await expect(app.home.page).toHaveURL(expectedUrl);
    });
@@ -34,7 +33,6 @@ for (const {index, expectedUrl} of testDataHeader.headerLinksSocialNetwork) {
        //Actions
        await app.home.open();
        const newPage = await app.home.header.clickLinkHeaderSocialNetwork(index)
-
        //Assert
        await expect(newPage).toHaveURL(expectedUrl);
    });
@@ -72,7 +70,6 @@ for (const {index, expectedUrl} of testDataFooter.socialLinksFooter) {//footer s
       //Actions
       await app.home.open();
       const newPage = await app.home.footer.clickLinkFooterSocialNetwork(index)
-  
       //Assert
       await expect(newPage).toHaveURL(expectedUrl);
       
@@ -85,7 +82,6 @@ for (const {link, expectedUrl} of testDataFooter.footerLinks) {
        //Actions
        await app.home.open();
        await app.home.footer.clickLinkFooter(link)
-
        //Assert
        await expect(app.home.page).toHaveURL(expectedUrl);
    });
@@ -207,11 +203,7 @@ test('Donate with PayPal', async ({ page }) => {
 
 });
 
-
-
 //FAQ
-
-
 test('Check FAQ questions opened', async ({ page }) => {
     
     const app = new App(page);
@@ -265,8 +257,8 @@ test('Contact us send form ', async ({ page }) => {
     await app.home.form.nameField.pressSequentially('test');
     await app.home.form.emailField.pressSequentially('test@test.com');
     await app.home.form.commentField.pressSequentially('TEST');
-    await app.home.form.agreementCheckbox.hover();
-    await app.home.form.agreementCheckbox.click(('{ force: true }'));
+    
+    await app.home.form.agreementCheckbox.click();
     await app.home.form.sendButton.click();
 
     //Assert
@@ -288,8 +280,6 @@ test('Contact us send form 2 ', async ({ page }) => {
     await app.home.form.nameField.pressSequentially('test android');
     await app.home.form.emailField.pressSequentially('test@test.com');
     await app.home.form.commentField.pressSequentially('TEST android');
-    
-    
     await app.home.form.agreementCheckbox.click();
     await app.home.form.sendButton.click();
 
@@ -313,12 +303,8 @@ test('Contact us send form 3 ', async ({ page }) => {
     await app.home.form.nameField.pressSequentially('test windows');
     await app.home.form.emailField.pressSequentially('test@test.com');
     await app.home.form.commentField.pressSequentially('TEST windows');
-    await app.home.form.agreementCheckbox.scrollIntoViewIfNeeded();
-    //await app.home.form.agreementCheckbox.toBeVisible();
-    await app.home.form.agreementCheckbox.hover();
-    await app.home.form.agreementCheckbox.click(('{ force: true }'));
+    await app.home.form.agreementCheckbox.click();
     await app.home.form.sendButton.click();
-
     //Assert
     await expect(app.home.headingSuccess).toBeVisible();
     await expect(app.home.buttonStartPageSuccess).toBeVisible();
@@ -331,7 +317,6 @@ for (const {link, expectedUrl} of testDataFooter.footerLinks) {
       //Actions
       await app.home.open();
       await app.home.footer.clickLinkFooter(link)
-  
       //Assert
       await expect(app.home.page).toHaveURL(expectedUrl);
       
@@ -344,7 +329,6 @@ for (const {link, expectedUrl} of testDataFooter.footerLinks) {
       //Actions
       await app.home.open();
       const newPage = await app.home.footer.clickLinkFooterSocialNetwork(index)
-  
       //Assert
       await expect(newPage).toHaveURL(expectedUrl);
       
@@ -358,16 +342,6 @@ test('link Swisscows AG', async ({ page }) => {
     const newPage = await app.home.clickLinkSwisscowsAG();
     //Assert
     await expect(newPage).not.toHaveURL('https://company.swisscows.com/en');
-
-    /*
-    const popupPromise = page.waitForEvent('popup');
-    const newPage = await popupPromise;
-    await newPage.waitForLoadState();
-    const currentURL = page.url();
-    const newPageURL = newPage.url('https://company.swisscows.com/en');
-    expect(currentURL).not.toEqual(newPageURL);
-    */
-
 });
 for(const {id, expectedUrl} of testDataHeader.headerAppLinks) {
 test(`Check click link ${id}store in header on Home page` , async ({ page }) => {//Header 2 links shops
@@ -375,8 +349,6 @@ test(`Check click link ${id}store in header on Home page` , async ({ page }) => 
     //Actions
     await app.home.open();
     const newPage = await app.home.header.clickStoreLink(id);
-    
-    
     //Assert
     await expect(newPage).toHaveURL(expectedUrl);
 });

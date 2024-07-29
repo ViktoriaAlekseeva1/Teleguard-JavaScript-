@@ -52,15 +52,12 @@ for (const {link, expectedUrl} of testDataFooter.footerLinks) {
     //Actions
     await app.myVoice.openMyVoise();
     await app.myVoice.footer.clickLinkFooter(link);
-
     //Assert
     await expect(app.myVoice.page).toHaveURL(expectedUrl);
     
   });
   
 }
-
-
 
 for (const {index, expectedUrl} of testDataFooter.socialLinksFooter) {
   test(`Check links socialnetwork ${index} in footer in MyVoice page`, async ({ page }) => { //footer social network

@@ -56,6 +56,5 @@ test ('Click link Info on page Privacy', async ({ page }) => {
     await app.privacyPolicy.clickLinkInfoPrivacyPage();
     //Assert
     //expect(popup).toBeDefined();
-    
     await expect(app.privacyPolicy.linkInfoPrivacy).toHaveAttribute('href', 'mailto:info@swisscows.com');
 });

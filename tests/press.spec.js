@@ -13,7 +13,6 @@ test('Check logo on page Press', async ({ page }) => {
 test('Check download first image', async ({ page }) => {//teleGuardLogo1
     const app = new App(page);
     const currentURL = page.url();
-    
     //Actions
     await app.press.openPress();
     const newPage = await app.press.teleGuardLogo1();
@@ -26,12 +25,10 @@ test('Check download first image', async ({ page }) => {//teleGuardLogo1
 test('Check download second image', async ({ page }) => {//teleGuardLogo2
     const app = new App(page);
     const currentURL = page.url();
-    
     //Actions
     await app.press.openPress();
     const newPage = await app.press.teleGuardLogo2();
     const newPageURL = newPage.url('https://dev.teleguard.com/images/tg_logo.jpg');
-    
     //Assert
     expect(currentURL).not.toEqual(newPageURL);
 

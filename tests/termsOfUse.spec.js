@@ -22,6 +22,5 @@ test ('Click link Info on page TermsOfUse', async ({ page }) => {
     await app.termsOfUse.clickLinkInfoTermsOfUsePage();
     //Assert
     //expect(popup).toBeDefined();
-    
     await expect(page.locator('a[href="mailto:info@swisscows.com"]')).toHaveAttribute('href', 'mailto:info@swisscows.com');
 });
