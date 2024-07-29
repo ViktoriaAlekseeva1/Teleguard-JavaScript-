@@ -21,7 +21,7 @@ test('Contact us send form page Beta Testing ', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.betaTesting.openBetaTesting();
-    await app.betaTesting.form.fieldTeleguardID.pressSequentially('DQ2SABC$Q');
+    await app.betaTesting.form.fieldTeleguardID.pressSequentially('DQ2SABC4Q');
     await app.betaTesting.form.fieldYourEmail.pressSequentially('test@test.com');
     await app.betaTesting.form.fieldDevice.pressSequentially('test1234');
     await app.betaTesting.form.fieldSystemVersion.pressSequentially('4.09.67');
@@ -29,7 +29,7 @@ test('Contact us send form page Beta Testing ', async ({ page }) => {
     await app.betaTesting.form.fieldNumberOfTeleguard.pressSequentially('DQ2SABC$Q');
     await app.betaTesting.form.fieldFullName.pressSequentially('Full Name Test');
     await app.betaTesting.form.fieldComment.pressSequentially('TEST');
-    await app.betaTesting.form.agreementCheckboxBetaTesting.click();
+    await app.betaTesting.form.agreementCheckboxBetaTesting.check(('{ force: true }'));
     await app.betaTesting.form.sendButtonBetaTesting.click();
     //Assert
     

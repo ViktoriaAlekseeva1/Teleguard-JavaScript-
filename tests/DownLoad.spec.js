@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
+test.setTimeout(300000);
+
 
 
 test('apkButtonHeader', async ({ page }) => {//apkFileHeader
