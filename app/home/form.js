@@ -13,7 +13,7 @@ export default class Form {
         this.nameField = this.page.locator('//*[@id="Name"]')
         this.emailField = this.page.locator('//*[@id="Email"]')
         this.commentField = this.page.getByPlaceholder('Your Comments *')
-        this.agreementCheckbox = this.page.locator('input[id="Agreement"]')     //('//*[@id="Agreement"]')
+        this.agreementCheckbox = this.page.locator('//*[@class="agreement"]/p')     //('//*[@id="Agreement"]')
         this.sendButton = this.page.locator('//*[@id="contacts"]/div/form/button')
 
         this.improvementCategoryInDropdown = this.page.locator('li').filter({ hasText: 'Propose an improvement' })

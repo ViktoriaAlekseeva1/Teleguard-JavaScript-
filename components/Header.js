@@ -87,31 +87,31 @@ export default class Header{
 
     apkButtonHeader = async() => {
         await this.page.getByRole('link', { name: 'Download APK file' }).first().click();
-        const downloadPromise = this.page.waitForEvent('download', { timeout: 500000 });
+        const downloadPromise = this.page.waitForEvent('download', { timeout: 600000 });
         await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click();
-        await new Promise(resolve => setTimeout(resolve, 190000)); 
+        await new Promise(resolve => setTimeout(resolve, 200000)); 
         const download = await downloadPromise;
         return download;
     }
     MSWindowsButtonHeader = async() => {
-        const download1Promise = this.page.waitForEvent('download', { timeout: 500000 });
+        const download1Promise = this.page.waitForEvent('download', { timeout: 600000 });
         await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).click();
-        await new Promise(resolve => setTimeout(resolve, 190000));
+        await new Promise(resolve => setTimeout(resolve, 200000));
         const download1 = await download1Promise;
         return download1;
     }
     MacOSButtonHeader = async() => {
-        const download2Promise = this.page.waitForEvent('download', { timeout: 500000 });
+        const download2Promise = this.page.waitForEvent('download', { timeout: 600000 });
         await this.page.getByRole('link', { name: 'MacOS' }).click();
-        await new Promise(resolve => setTimeout(resolve, 190000));
+        await new Promise(resolve => setTimeout(resolve, 200000));
         const download2 = await download2Promise;
         return download2;
     }
     LinuxDEB_ButtonHeader = async() => {
         await this.page.getByRole('link', { name: 'Linux', exact: true }).click();
-        const download3Promise = this.page.waitForEvent('download', { timeout: 500000 });
+        const download3Promise = this.page.waitForEvent('download', { timeout: 600000});
         await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click();
-        await new Promise(resolve => setTimeout(resolve, 190000));
+        await new Promise(resolve => setTimeout(resolve, 200000));
         const download3 = await download3Promise;
         return download3;
     }

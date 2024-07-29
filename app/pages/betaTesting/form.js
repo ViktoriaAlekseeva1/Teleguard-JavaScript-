@@ -12,7 +12,7 @@ export default class Form{
     this.fieldNumberOfTeleguard = this.page.locator('//*[@id="Form_NumberContacs"]')
     this.fieldFullName = this.page.locator('//*[@id="Form_Name"]')
     this.fieldComment = this.page.locator('//*[@id="Form_Comments"]')
-    this.agreementCheckboxBetaTesting = this.page.locator('input[id="Agreement"]')//('//*[@id="Form_Agreement"]')
+    this.agreementCheckboxBetaTesting = this.page.locator('//*[@class="agreement"]/p')//('//*[@id="Form_Agreement"]')
     this.sendButtonBetaTesting = this.page.locator('//*[@class="container"]/div/form/button')
     this.linkPrivacyPolicy = this.page.locator('//*[@class="agreement"]/p/a')
     
