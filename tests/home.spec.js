@@ -288,9 +288,9 @@ test('Contact us send form 2 ', async ({ page }) => {
     await app.home.form.nameField.pressSequentially('test android');
     await app.home.form.emailField.pressSequentially('test@test.com');
     await app.home.form.commentField.pressSequentially('TEST android');
-    await app.home.form.agreementCheckbox.scrollIntoViewIfNeeded();
-    await app.home.form.agreementCheckbox.hover();
-    await app.home.form.agreementCheckbox.click(('{ force: true }'));
+    
+    
+    await app.home.form.agreementCheckbox.click();
     await app.home.form.sendButton.click();
 
     //Assert
