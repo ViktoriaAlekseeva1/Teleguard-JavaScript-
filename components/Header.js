@@ -87,32 +87,32 @@ export default class Header{
 
     apkButtonHeader = async() => {
         await this.page.getByRole('link', { name: 'Download APK file' }).first().click();
-        const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click(); 
+        await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click({ timeout: 60000 });
+        const downloadPromise = this.page.waitForEvent('download'); 
         const download = await downloadPromise;
-        await download.saveAs('teleguard-latest.apk');
+        //await download.saveAs('teleguard-latest.apk');
         return download;
     }
     MSWindowsButtonHeader = async() => {
         const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).click();
+        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).click({ timeout: 60000 });
         const download = await downloadPromise;
-        await download.saveAs('teleguard-desktop-latest.exe');
+        //await download.saveAs('teleguard-desktop-latest.exe');
         return download;
     }
     MacOSButtonHeader = async() => {
         const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'MacOS' }).click();
+        await this.page.getByRole('link', { name: 'MacOS' }).click({ timeout: 60000 });
         const download = await downloadPromise;
-        await download.saveAs('teleguard-desktop-latest.dmg');
+        //await download.saveAs('teleguard-desktop-latest.dmg');
         return download;
     }
     LinuxDEB_ButtonHeader = async() => {
         await this.page.getByRole('link', { name: 'Linux', exact: true }).click();
         const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click();
+        await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click({ timeout: 60000 });
         const download = await downloadPromise;
-        await download.saveAs('teleguard-desktop-latest.deb');
+        //await download.saveAs('teleguard-desktop-latest.deb');
         return download;
     }
     LinuxSnapStoreButtonHeader = async() => {
