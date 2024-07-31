@@ -7,33 +7,29 @@ export default class ContentHome {
         this.buttonPopupBenefits = this.page.getByRole('link', { name: 'Download APK file' }).nth(2)
     }
     apkButtonBenefits = async() => {
+        const downloadPromise = this.page.waitForEvent('download');
         await this.page.locator('#benefits').getByRole('link', { name: 'Download APK file' }).click();
-        const downloadPromise = this.page.waitForEvent('download', { timeout: 600000 });
-        await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click({ timeout: 600000 });
+        await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click();
         const download = await downloadPromise;
-        //await download.saveAs('teleguard-latest.apk');
         return download;
     }
     MSWindowsButtonBenefits = async() => {
-        const downloadPromise = this.page.waitForEvent('download', { timeout: 600000 });
-        await this.page.getByRole('link', { name: 'TeleGuard for WINDOWS *' }).click({ timeout: 600000 });
+        const downloadPromise = this.page.waitForEvent('download');
+        await this.page.getByRole('link', { name: 'TeleGuard for WINDOWS *' }).click();
         const download = await downloadPromise;
-        //await download.saveAs('teleguard-desktop-latest.exe');
         return download;
     }
     MacOSButtonBenefits = async() => {
-        const downloadPromise = this.page.waitForEvent('download', { timeout: 60000 });
-        await this.page.getByRole('link', { name: 'TeleGuard for Mac OS' }).click({ timeout: 60000 });
+        const downloadPromise = this.page.waitForEvent('download');
+        await this.page.getByRole('link', { name: 'TeleGuard for Mac OS' }).click();
         const download = await downloadPromise;
-        //await download.saveAs('teleguard-desktop-latest.dmg');
         return download;
     }
     LinuxDEB_ButtonBenefits = async() => {
+        const downloadPromise = this.page.waitForEvent('download');
         await this.page.getByRole('link', { name: 'TeleGuard for LINUX' }).click();
-        const downloadPromise = this.page.waitForEvent('download', { timeout: 60000 });
-        await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click({ timeout: 60000 });
+        await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click({});
         const download = await downloadPromise;
-        //await download.saveAs('teleguard-desktop-latest.deb');
         return download;
     }
     LinuxSnapStoreButtonBenefits = async() => {
