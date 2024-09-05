@@ -24,8 +24,19 @@ export default class Form {
         this.windowsCategoryInDropdown = this.page.locator('li').filter({ hasText: 'Windows' })
 
     }
-        //Contact us 
-        async ContactUs () {
+    async buttonSendHomePageChageColor(){
+        const buttonLocator = this.sendButton;
+        const colorBeforeHover = await buttonLocator.evaluate(button => {// Получите цвет кнопки до наведения
+            return window.getComputedStyle(button).backgroundColor;
+        });
+        await buttonLocator.hover();
+        const colorAfterHover = await buttonLocator.evaluate(button => {//Получите цвет кнопки после наведения
+            return window.getComputedStyle(button).backgroundColor;
+        });
+        expect(colorBeforeHover).not.toBe(colorAfterHover);
+    }
+        //Contact us
+    async ContactUs () {
             await this.page.locator('div').filter({ hasText: '/^Please select request category \*$/' }).click();
             await this.page.getByText('Report a bugPropose an').click();
             await this.page.locator('li').filter({ hasText: 'Report a bug' }).click();
@@ -55,7 +66,7 @@ export default class Form {
             await this.page.locator('div').filter({ hasText: '/^Android$/' }).click();
             await this.page.locator('li').filter({ hasText: 'Windows' }).click();
             await this.page.locator('div').filter({ hasText: '/^Windows$/' }).click();
-        }
+    }
 
  
 }

@@ -1,0 +1,35 @@
+{
+    "switchLanguagesDonate":[
+        {
+            "locatorName":"English",
+            "expectedUrl":"https://dev.teleguard.com/en/donation"
+        },
+    
+        {
+            "locatorName":"Deutsch",
+            "expectedUrl":"https://dev.teleguard.com/de/donation"
+        },
+        {
+            "locatorName":"Français",
+            "expectedUrl":"https://dev.teleguard.com/fr/donation"
+        },
+        {
+            "locatorName":"Italiano",
+            "expectedUrl":"https://dev.teleguard.com/it/donation"
+        },
+        {
+            "locatorName":"Español",
+            "expectedUrl":"https://dev.teleguard.com/es/donation"
+        },
+        {
+            "locatorName":"Русский",
+            "expectedUrl":"https://dev.teleguard.com/ru/donation"
+        },
+        {
+            "locatorName":"Українська",
+            "expectedUrl":"https://dev.teleguard.com/uk/donation"
+        
+        }
+    
+    ]
+}

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDataMyVoiseHeader from '../app/data/myvoise/testDataMyVoiseHeader.json' assert { type: 'json' };;
-import testDataFooter from '../components/testDataFooter.json' assert { type: 'json' };;
+import testDataMyVoiseHeader from '../app/data/myvoise/testDataMyVoiseHeader.json' assert { type: 'json' };
+import testDataFooter from '../components/testDataFooter.json' assert { type: 'json' };
 
 for (const {locatorName, expectedUrl} of testDataMyVoiseHeader.switchLanguagesMyVoise) {
     test(`Check switch languages ${locatorName} in header Home page My voise`, async ({ page }) => {//languages

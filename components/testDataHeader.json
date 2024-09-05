@@ -14,7 +14,7 @@
         },
         {
             "link":"Donate",
-            "expectedUrl":"https://dev.teleguard.com/en#donation"
+            "expectedUrl":"https://dev.teleguard.com/en/donation"
         },
         {
             "link":"Business",

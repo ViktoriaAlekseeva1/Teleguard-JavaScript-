@@ -11,6 +11,7 @@ for (const {locatorName, expectedUrl} of testData.headerLinks) {
        //Assert
        await expect(app.business.page).toHaveURL(expectedUrl);
    });
+  
 
 }
 for (const {locatorName, expectedUrl} of testData.switchLanguages) {
@@ -51,3 +52,15 @@ for (const {locatorName, expectedUrl} of testData.switchLanguages) {
     });
     
   }
+  /*
+  //expectVideoToPlay
+  test('Check Video', async ({ page }) => {
+    const app = new App(page);
+    //Actions
+    await app.business.openBusiness();
+    await app.business.header.expectVideoToPlay();
+    //Assert
+    await expect(app.business.page).toHaveURL('/business/');
+  });
+  */
+

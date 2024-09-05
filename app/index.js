@@ -8,6 +8,7 @@ import Imprint from "./pages/ContentsPages/Imprint/page";
 import PrivacyPolicy from "./pages/ContentsPages/PrivacyPolicy/page";
 import TermsOfUse from "./pages/ContentsPages/TermsOfUse/page";
 import Press from "./pages/ContentsPages/Press/page";
+import Donate from "./pages/donate/page";
 export default class App{
     constructor(page) {
         this.page = page;
@@ -21,5 +22,6 @@ export default class App{
         this.privacyPolicy = new PrivacyPolicy(page);
         this.termsOfUse = new TermsOfUse(page);
         this.press = new Press(page);
+        this.donate = new Donate(page);
     }
 }

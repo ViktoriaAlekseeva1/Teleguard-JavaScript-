@@ -54,9 +54,32 @@ export default class Header{
         this.українська = this.page.locator('link', { name: 'українська' })
         this.English = this.page.locator('link', { name: 'English' })
     }
-
-
+    async buttonBusinessChageColor(){
+        const buttonLocator = this.linkBusiness;
+        const colorBeforeHover = await buttonLocator.evaluate(button => {// Получите цвет кнопки до наведения
+            return window.getComputedStyle(button).backgroundColor;
+        });
+        await buttonLocator.hover();
+        const colorAfterHover = await buttonLocator.evaluate(button => {//Получите цвет кнопки после наведения
+            return window.getComputedStyle(button).backgroundColor;
+        });
+        expect(colorBeforeHover).not.toBe(colorAfterHover);
+    }
+    async buttonMyVoiceChageColor(){
+        const buttonLocator = this.linkMyVOICE;
+        const colorBeforeHover = await buttonLocator.evaluate(button => {// Получите цвет кнопки до наведения
+            return window.getComputedStyle(button).backgroundColor;
+        });
+        await buttonLocator.hover();
+        const colorAfterHover = await buttonLocator.evaluate(button => {//Получите цвет кнопки после наведения
+            return window.getComputedStyle(button).backgroundColor;
+        });
+        expect(colorBeforeHover).not.toBe(colorAfterHover);
+    }
     
+
+
+
     async clickLinkHeader(link) {
         await this.allLinks(link).click()
     }
@@ -131,6 +154,7 @@ export default class Header{
         const filePath = (await download.path()).toString();
         expect((await fs.promises.stat(filePath)).size).toBeGreaterThan(sizeByte);
     }
+
     
 
 
