@@ -59,7 +59,7 @@ export default class Header{
         const colorBeforeHover = await buttonLocator.evaluate(button => {// Получите цвет кнопки до наведения
             return window.getComputedStyle(button).backgroundColor;
         });
-        await buttonLocator.hover();
+        await buttonLocator.hover({ timeout: 5000 });
         const colorAfterHover = await buttonLocator.evaluate(button => {//Получите цвет кнопки после наведения
             return window.getComputedStyle(button).backgroundColor;
         });
@@ -70,7 +70,7 @@ export default class Header{
         const colorBeforeHover = await buttonLocator.evaluate(button => {// Получите цвет кнопки до наведения
             return window.getComputedStyle(button).backgroundColor;
         });
-        await buttonLocator.hover();
+        await buttonLocator.hover({ timeout: 5000 });
         const colorAfterHover = await buttonLocator.evaluate(button => {//Получите цвет кнопки после наведения
             return window.getComputedStyle(button).backgroundColor;
         });
@@ -117,7 +117,8 @@ export default class Header{
     }
     MSWindowsButtonHeader = async() => {
         const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).click();
+        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).first().click();
+        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).nth(1).click();
         const download = await downloadPromise;
 
         return download;

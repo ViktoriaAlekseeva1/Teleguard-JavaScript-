@@ -16,6 +16,7 @@ export default class ContentHome {
     MSWindowsButtonBenefits = async() => {
         const downloadPromise = this.page.waitForEvent('download');
         await this.page.getByRole('link', { name: 'TeleGuard for WINDOWS *' }).click();
+        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).nth(1).click();
         const download = await downloadPromise;
         return download;
     }

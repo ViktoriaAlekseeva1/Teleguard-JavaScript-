@@ -5,17 +5,20 @@ export default class Form{
 
     //Locators
     this.fieldNameBusiness = this.page.locator('//*[@id="Name"]')
-    this.fieldFirstNameBusines = this.page.locator('//*[@id="First name"]')
+    this.fieldFirstNameBusines = this.page.locator('//*[@id="Surname"]')
     this.fieldEmailBusiness = this.page.locator('//*[@id="Email"]')
-    this.fieldCompanyBusiness = this.page.locator('//*[@id="Company"]//div[2]')
+    this.fieldCompanyBusiness = this.page.locator('//*[@id="Company"]')
     this.fieldNumberOfUsers = this.page.locator('//*[@id="contacts"]/div/form/fieldset[3]/div[1]/div')
     this.fieldSelectTariff = this.page.locator('//*[@id="contacts"]/div/form/fieldset[3]/div[2]/div')
-    this.fieldStreetHouseNumber = this.page.locator('//*[@id="Street"]//div[2]')
-    this.fieldZipCodeCity = this.page.locator('//*[@id="City"]//div[2]')
-    this.fieldPhoneBusiness = this.page.locator('//*[@id="Phone"]//div[2]')
-    this.fieldCommentBusiness = this.page.locator('//*[@id="contacts"]/div/form/textarea//div[2]')
+    this.fieldStreetHouseNumber = this.page.locator('//*[@id="Street"]')
+    this.fieldZipCodeCity = this.page.locator('//*[@id="City"]')
+    this.fieldPhoneBusiness = this.page.locator('//*[@id="Phone"]')
+    this.fieldCommentBusiness = this.page.locator('//*[@name="comments"]')
     this.agreementCheckbox = this.page.locator('//*[@id="Agreement"]')
     this.sendButton = this.page.locator('//*[@id="contacts"]/div/form/button')
+
+    this.headingSuccess = this.page.getByRole('heading', { name: 'Success!' })
+    this.buttonStartPageSuccess = this.page.getByRole('link', { name: 'start page' })
 
     }
     async ContactUsBusiness () {
