@@ -1,14 +1,14 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Home from "./home/page";
-import Business from "./pages/business/page";
-import MyVoice from "./pages/myVoice/page";
-import BetaTesting from "./pages/betaTesting/page";
-import Imprint from "./pages/ContentsPages/Imprint/page";
-import PrivacyPolicy from "./pages/ContentsPages/PrivacyPolicy/page";
-import TermsOfUse from "./pages/ContentsPages/TermsOfUse/page";
-import Press from "./pages/ContentsPages/Press/page";
-import Donate from "./pages/donate/page";
+import Footer from "../components/Footer.js";
+import Header from "../components/Header.js";
+import Home from "./home/page.js";
+import Business from "./pages/business/page.js";
+import MyVoice from "./pages/myVoice/page.js";
+import BetaTesting from "./pages/betaTesting/page.js";
+import Imprint from "./pages/ContentsPages/Imprint/page.js";
+import PrivacyPolicy from "./pages/ContentsPages/PrivacyPolicy/page.js";
+import TermsOfUse from "./pages/ContentsPages/TermsOfUse/page.js";
+import Press from "./pages/ContentsPages/Press/page.js";
+import Donate from "./pages/donate/page.js";
 export default class App{
     constructor(page) {
         this.page = page;

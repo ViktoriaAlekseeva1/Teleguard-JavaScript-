@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import Header from "./header"
-import Form from "./form"
-import Footer from "./footer"
+
+import Header from "./header.js"
+import Form from "./form.js"
+import Footer from "./footer.js"
 export default class Business {
     constructor(page) {
         this.page = page;

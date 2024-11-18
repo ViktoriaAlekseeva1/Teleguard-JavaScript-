@@ -1,6 +1,6 @@
-import Form from "./form";
-import Footer from "../../../components/Footer";
-import Header from "../../../components/Header";
+import Form from "./form.js";
+import Footer from "../../../components/Footer.js";
+import Header from "../../../components/Header.js";
 export default class BetaTesting {
     constructor(page) {
         this.page = page;

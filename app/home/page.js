@@ -1,8 +1,8 @@
-import { test, expect } from '@playwright/test';
-import Form from './form';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import ContentHome from './contentHome';
+import { expect } from '@playwright/test';
+import Form from './form.js';
+import Footer from '../../components/Footer.js';
+import Header from '../../components/Header.js';
+import ContentHome from './contentHome.js';
 export default class Home {
     constructor(page) {
         this.page = page;

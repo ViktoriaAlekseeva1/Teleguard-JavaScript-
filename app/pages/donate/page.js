@@ -1,5 +1,5 @@
-import Content from "./content"
-import Header from "./header"
+import Content from "./content.js"
+import Header from "./header.js"
 export default class Donate {
     constructor(page) {
         this.page = page;

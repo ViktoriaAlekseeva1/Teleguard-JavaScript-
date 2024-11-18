@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+
 export default class Footer{
     constructor(page) {
         this.page = page;

@@ -1,6 +1,6 @@
-import { test, expect } from '@playwright/test';
-import Header from "../../../../components/Header";
-import Footer from "../../../../components/Footer";
+import { expect } from '@playwright/test';
+import Header from "../../../../components/Header.js";
+import Footer from "../../../../components/Footer.js";
 
 export default class Press {
     constructor(page) {

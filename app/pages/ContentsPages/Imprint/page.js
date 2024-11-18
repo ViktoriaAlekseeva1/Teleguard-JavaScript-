@@ -1,5 +1,5 @@
-import Header from "../../../../components/Header";
-import Footer from "../../../../components/Footer";
+import Header from "../../../../components/Header.js";
+import Footer from "../../../../components/Footer.js";
 export default class Imprint {
     constructor(page) {
         this.page = page;
