@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDataHeader from '../components/testDataHeader.json' assert { type: 'json' };
-import testDataFooter from '../components/testDataFooter.json' assert { type: 'json' };
+import testDataHeader from '../components/testDataHeader.json' assert { type: 'json' }
+import testDataFooter from '../components/testDataFooter.json' assert { type: 'json' }
 
 for (const { link, expectedUrl } of testDataHeader.headerLinks) {
     test(`Check click link ${link} in header on Home page`, async ({ page }) => {//links header

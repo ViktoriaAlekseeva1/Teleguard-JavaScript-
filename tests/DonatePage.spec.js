@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDataDonation from '../app/data/donate/testDataDonation.json' assert { type: 'json' };
+import testDataDonation from '../app/data/donate/testDataDonation.json';
 
 
 

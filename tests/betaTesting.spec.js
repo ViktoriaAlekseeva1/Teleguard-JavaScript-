@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import App from '../app/index.js';
-import testDataBetaTestingHeader from '../app/data/betaTesting/testDataBetaTestingHeader.json' assert { type: 'json' };
+import testDataBetaTestingHeader from '../app/data/betaTesting/testDataBetaTestingHeader.json';
 
 for (const { id, locatorName, expectedUrl} of testDataBetaTestingHeader.switchLanguages) {
     test(`${id} Check switch languages ${locatorName} in header BetaTesting page`, async ({ page }) => {//languages
