@@ -21,7 +21,7 @@ async openMyVoise() {
     }
 }
 async openDropDownMenu(){
-    const languageDropdownButton = await this.page.locator('//*[@id="header"]/div/nav/div[1]/a');
+    const languageDropdownButton = await this.page.locator('.languages');;
     await languageDropdownButton.click();
 }
 }

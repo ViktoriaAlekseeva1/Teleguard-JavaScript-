@@ -3,7 +3,7 @@
 
         {
             "index":0,
-            "expectedUrl":"https://x.com/Teleguard_"
+            "expectedUrl":"https://x.com/Teleguard_?mx=2"
         },
     
         {
@@ -17,6 +17,10 @@
 
         {
             "index":4,
+            "expectedUrl":"https://vk.com/teleguard"
+        },
+        {
+            "index":5,
             "expectedUrl":"https://www.linkedin.com/company/teleguard/"
         }
     ],

@@ -4,11 +4,15 @@ export default class Header{
     constructor(page) {
         this.page = page;
 
-        this.allLinksNetwork = (index) => this.page.locator('.social-links > a').nth(index)
-        this.allLinks = (name) => this.page.getByRole('link', { name: name, exact: true })
+        this.allLinksNetwork = (index) => this.page.locator('.social-links > a').nth(index);
+
+        //this.allLanguages = (name) => this.page.locator('li').filter({ hasText: name })
+        this.allLinks = (name) => this.page.getByRole('link', { name: name })
+        //this.allLinks = (name) => this.page.getByRole('link', { name: name, exact: true })
         this.storeLink = (id) => this.page.locator(`#app-${id}`)
 
-        this.allLanguages = (name) => this.page.getByRole('link', { name: name }).first()
+        this.allLanguages = (name) => this.page.getByText(name).first();
+        //this.allLanguages = this.page.locator('.languages')
         //Locators
         this.linkBenefits = this.page.locator('//*[@id="menu"]/li[1]/a')
         this.linkFAQ = this.page.locator('//*[@id="menu"]/li[3]/a')
@@ -20,11 +24,12 @@ export default class Header{
         this.linkMyVOICE = this.page.locator('//*[@id="menu"]/li[7]/a')
         //header2
         this.linkAppStore = this.page.locator('#app-ios')
-        this.linkGooglePlay = this.page.locator('#app-android')
+        this.linkGooglePlay = this.page.locator('//*[@id="app-android"]')
         //header3
         this.linkBeta = this.page.locator('link', { name: 'Teleguard.com/beta-testing' })
         //apk header
-        this.buttonApk = this.page.locator('link', { name: 'Download APK file' }).first()
+        //this.buttonApk = this.page.locator('link', { name: 'Download APK file' }).first()
+        this.buttonApk = this.page.getByRole('button', { name: 'Download APK file' }).first()//locator('//*[@class="download-apk download-apk-button download-buttons"]')
         this.buttonPopup = this.page.locator('link', { name: 'Download APK file' }).nth(2)
 
         //social network
@@ -36,26 +41,21 @@ export default class Header{
         this.linkLinkedInHeader = this.page.locator('.social-links > a:nth-child(5)')
 
 
-        //SwitchLanguages
-        this.languageDropdownButton = this.page.locator('//*[@id="header"]/div/nav/div[2]/ul')
-        this.English = this.page.locator('//*[@id="header"]/div/nav/div[2]/ul/li[1]/a')
-        //await this.page.getByText('English Deutsch Français')
-        this.Deutsch = this.page.locator('//*[@id="header"]/div/nav/div[2]/ul/li[2]/a')
-        this.Deutsch = this.page.locator('link', { name: 'Deutsch' })
-        this.Français = this.page.locator('link', { name: 'Français' })
-        this.français = this.page.locator('link', { name: 'français' })
-        this.Italiano = this.page.locator('link', { name: 'Italiano' })
-        this.italiano = this.page.locator('link', { name: 'italiano' })
-        this.Español = this.page.locator('link', { name: 'Español' })
-        this.español = this.page.locator('link', { name: 'español' })
-        this.Русский = this.page.locator('link', { name: 'Русский' })
-        this.русский = this.page.locator('link', { name: 'русский' })
-        this.Українська = this.page.locator('link', { name: 'Українська' })
-        this.українська = this.page.locator('link', { name: 'українська' })
-        this.English = this.page.locator('link', { name: 'English' })
+
     }
+    
+    async clickLinkHeader(link) {
+        await this.allLinks(link).click();
+    }
+    async clickLinkMoreInfo () {
+        const link = await this.page.getByRole('link', { name: 'ver 3.4.0 Organize' });
+        await link.click();
+        
+    }
+    /*      
     async buttonBusinessChageColor(){
         const buttonLocator = this.linkBusiness;
+        await buttonLocator.waitFor();
         const colorBeforeHover = await buttonLocator.evaluate(button => {// Получите цвет кнопки до наведения
             return window.getComputedStyle(button).backgroundColor;
         });
@@ -76,15 +76,33 @@ export default class Header{
         });
         expect(colorBeforeHover).not.toBe(colorAfterHover);
     }
+    */
+    async checkButtonHoverColorChange(buttonLocator) {
+        await expect(buttonLocator).toBeVisible(); // Проверяем, что кнопка видима
     
-
-
-
-    async clickLinkHeader(link) {
-        await this.allLinks(link).click()
+        // Получаем цвет ДО наведения
+        const colorBefore = await buttonLocator.evaluate(el => 
+            window.getComputedStyle(el).backgroundColor
+        );
+    
+        // Наводим курсор
+        await buttonLocator.hover();
+        await this.page.waitForTimeout(500); // Ждем анимацию (если есть)
+    
+        // Проверяем изменение цвета
+        await expect(buttonLocator).not.toHaveCSS('background-color', colorBefore);
     }
-    async switchLanguages(name) { 
-        await this.allLanguages(name).click()
+    
+    async buttonBusinessChangeColor() {
+        await this.checkButtonHoverColorChange(this.page.getByRole('link', { name: 'Business' }));
+    }
+    
+    async buttonMyVoiceChangeColor() {
+        await this.checkButtonHoverColorChange(this.page.getByRole('link', { name: 'MyVOICE' }));
+    }
+
+    async switchLanguagesHome(name) { 
+        await this.allLanguages(name).click();
     }
 
     async clickLinkHeaderSocialNetwork(iconName) {
@@ -108,17 +126,32 @@ export default class Header{
 
 
 
-    apkButtonHeader = async() => {
+
+    apkButtonHeader = async() => {//old method
         const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'Download APK file' }).first().click();
-        await this.page.getByRole('link', { name: 'Download APK file' }).nth(2).click();
+        await this.page.getByRole('button', { name: 'Download APK file' }).first().click();
+        await this.page.getByRole('link', { name: 'Download APK file' }).click();
         const download = await downloadPromise;
         return download;
     }
+        
+       /*
+    async apkButtonHeader() { //new method
+        const downloadPromise = this.page.waitForEvent('download');  // Ожидание скачивания
+        const pagePromise = this.page.waitForEvent('popup'); // Ожидание нового окна
+    
+        await this.buttonApk.click(); // Кликаем по кнопке через локатор
+    
+        const newPage = await pagePromise.catch(() => null); // Ловим popup, если он есть
+        const download = await downloadPromise; // Ловим скачивание
+    
+        return { newPage, download }; 
+    }
+        */
     MSWindowsButtonHeader = async() => {
         const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).first().click();
-        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).nth(1).click();
+        await this.page.getByRole('button', { name: 'MS Windows (8.0+)' }).click();
+        await this.page.getByRole('link', { name: 'MS Windows (8.0+)' }).click();
         const download = await downloadPromise;
 
         return download;
@@ -131,13 +164,13 @@ export default class Header{
     }
     LinuxDEB_ButtonHeader = async() => {
         const downloadPromise = this.page.waitForEvent('download');
-        await this.page.getByRole('link', { name: 'Linux', exact: true }).click();
+        await this.page.getByRole('button', { name: 'Linux', exact: true }).click();
         await this.page.getByRole('link', { name: 'DOWNLOAD .DEB' }).click();
         const download = await downloadPromise;
         return download;
     }
     LinuxSnapStoreButtonHeader = async() => {
-    await this.page.getByRole('link', { name: 'Linux', exact: true }).click();
+    await this.page.getByRole('button', { name: 'Linux', exact: true }).click();
     const [newPage] = await Promise.all([
         this.page.context().waitForEvent('page'),
         this.page.getByRole('link', { name: 'Get it from the Snap Store' }).click()

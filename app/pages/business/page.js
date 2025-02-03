@@ -12,9 +12,8 @@ export default class Business {
         //Locators
   
         this.textError = this.page.locator('h2:has-text("Error 500: Internal Server")')
-        this.dropDownMenu = this.page.locator('//*[@id="header"]/div/nav/div[2]/ul')
        //SwitchLanguages
-        this.dropDownMenu = this.page.locator('//*[@id="header"]/div/nav/div[2]/ul')
+        this.dropDownMenu = this.page.locator('//*[@class="languages-list active"]/ul')
         this.English = this.page.locator('//*[@id="header"]/div/nav/div[1]/a')
         //await this.page.getByText('English Deutsch Français')
         //this.Deutsch = this.page.locator('//*[@id="header"]/div/nav/div[2]/ul/li[2]/a')
@@ -40,19 +39,10 @@ export default class Business {
             await this.page.reload();
         }
     }
-    async openDropDownMenu(){
-        const languageDropdownButton = await this.page.locator('//*[@id="header"]/div/nav/div[1]/a');
-        await languageDropdownButton.click();
 
-        
-        /*
-        const languages = await this.page.locator(optionsLocator).innerTexts();
-        for (const { locatorName, expectedURL } of testData) {
-            if (option.includes(optionText)) {
-                await this.page.click(`text=${option}`);
-                return;
-            }
-        */
+    async openDropDownMenuBusiness(){
+        const languageDropdownButton = await this.page.locator('//*[@id="header"]/div/nav/div[1]');
+        await languageDropdownButton.click();
 
     }
 

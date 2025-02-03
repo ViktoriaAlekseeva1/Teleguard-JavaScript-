@@ -3,7 +3,9 @@ export default class Header{
         this.page = page;
         
         //Locators
-        this.allLanguages = (name) => this.page.getByRole('link', { name: name }).first()
+        //this.allLanguages = (name) => this.page.getByRole('link', { name: name }).first()
+        //this.allLanguages = (name) => this.page.locator('li').filter({ hasText: name })
+        this.allLanguages = (name) => this.page.getByText(name).first();
         this.textError = this.page.locator('h2:has-text("Error 500: Internal Server")')
         
         //SwitchLanguages

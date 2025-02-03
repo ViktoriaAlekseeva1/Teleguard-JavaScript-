@@ -21,7 +21,7 @@ export default class Donate {
         }
     }
     async openDropDownMenuDonate(){
-        const languageDropdownButton = await this.page.locator('//*[@class="header--donation"]/div/div/div/div[1]/a');
+        const languageDropdownButton = await this.page.locator('.header--donation .languages');
         await languageDropdownButton.click();
     }
 

@@ -4,17 +4,18 @@ export default class Form{
         this.page = page;
 
     //Locators
-    this.fieldTeleguardID = this.page.locator('//*[@id="Form_ID"]')
-    this.fieldYourEmail = this.page.locator('//*[@id="Form_Email"]')
-    this.fieldDevice = this.page.locator('//*[@id="Form_Device"]')
-    this.fieldSystemVersion = this.page.locator('//*[@id="Form_OS"]')
-    this.fieldCountry = this.page.locator('//*[@id="Form_Country"]')
-    this.fieldNumberOfTeleguard = this.page.locator('//*[@id="Form_NumberContacs"]')
-    this.fieldFullName = this.page.locator('//*[@id="Form_Name"]')
-    this.fieldComment = this.page.locator('//*[@id="Form_Comments"]')
-    this.agreementCheckboxBetaTesting = this.page.locator('//*[@class="agreement"]/p')//('//*[@id="Form_Agreement"]')
-    this.sendButtonBetaTesting = this.page.locator('//*[@class="container"]/div/form/button')
+    this.fieldTeleguardID = this.page.locator('//input[@placeholder="Teleguard ID *"]')
+    this.fieldYourEmail = this.page.locator('//input[@placeholder="Your Email *"]')
+    this.fieldDevice = this.page.locator('//input[@placeholder="Device *"]')
+    this.fieldSystemVersion = this.page.locator('//input[@placeholder="System, Version *"]')
+    this.fieldCountry = this.page.locator('//input[@placeholder="Country *"]')
+    this.fieldNumberOfTeleguard = this.page.locator('//input[@placeholder="Number of TeleGuard contacts (approx.)"]')
+    this.fieldFullName = this.page.locator('//input[@placeholder="Full Name"]')
+    this.fieldComment = this.page.locator('//textarea[@name="comments"]') 
+    this.agreementCheckboxBetaTesting = this.page.locator('//input[@type="checkbox"]')
+    this.sendButtonBetaTesting = this.page.locator('//button[@type="submit"]')
     this.linkPrivacyPolicy = this.page.locator('//*[@class="agreement"]/p/a')
+
     
 
     this.headingSuccess = this.page.getByRole('heading', { name: 'Success!' })
@@ -23,24 +24,26 @@ export default class Form{
 
     }
     async JoinTeleguardBetaTesting () {
-        await page.getByPlaceholder('Teleguard ID *').click();
-        await page.getByPlaceholder('Device *').click();
-        await page.getByPlaceholder('Country *').click();
-        await page.getByPlaceholder('Your Email *').click();
-        await page.getByPlaceholder('System, Version *').click();
-        await page.getByPlaceholder('Number of TeleGuard contacts').click();
-        await page.getByPlaceholder('Full Name').click();
-        await page.getByPlaceholder('Comment').click();
-        await page.getByLabel('I agree that my data will be').click();
-        await page.getByRole('button', { name: 'send' }).click();
+        await this.fieldTeleguardID.fill('DQ2SABC4Q');
+        await this.fieldYourEmail.fill('test@test.com');
+        await this.fieldDevice.fill('test1234');
+        await this.fieldSystemVersion.fill('4.09.67');
+        await this.fieldCountry.fill('Country Test');
+        await this.fieldNumberOfTeleguard.fill('DQ2SABC$Q');
+        await this.fieldFullName.fill('Full Name Test');
+        await this.fieldComment.fill('TEST');
+        await this.agreementCheckboxBetaTesting.check();
+        await this.sendButtonBetaTesting.click();
+    }
     
+    async LinkPrivacyPolicyBetaTesting() {
+        const [newPage] = await Promise.all([
+            this.page.waitForEvent('popup'),
+            this.page.getByRole('link', { name: 'privacy policy', exact: true }).click()
+        ]);
+        return newPage;
     }
-    async LinkPrivacyPolicyBetaTesting (){
-        await this.page.goto('https://dev.teleguard.com/en/beta-testing')
-        const page1Promise = this.page.waitForEvent('popup');
-        await this.page.getByRole('link', { name: 'privacy policy', exact: true }).click();
-        const page1 = await page1Promise;
-    }
+
     async waitForSuccessPageLoad() {
         await this.headingSuccess.waitFor({ state: 'visible' }); // Ожидание видимости заголовка успешности
     }

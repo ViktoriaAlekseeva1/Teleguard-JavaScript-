@@ -4,12 +4,13 @@ export default class Header{
         this.page = page;
         //Locators
 
-        this.allLanguages = (name) => this.page.getByRole('link', { name: name }).first()
+        //this.allLanguages = (name) => this.page.getByRole('link', { name: name }).first()
+        this.allLanguages = (name) => this.page.getByText(name).first();
         this.shopsHeader = (link) => this.page.locator('#header').getByRole('link', { name: link });
   
     }
     
-    async switchLanguages(name) { 
+    async switchLanguagesMyVoise(name) { 
         await this.allLanguages(name).click()
     }
     async buttonTeleguard (){

@@ -8,9 +8,9 @@ for (const { link, expectedUrl } of testDataHeader.headerLinks) {
         const app = new App(page);
         //Actions
         await app.home.open();
-        await app.home.header.buttonBusinessChageColor();
-        await app.home.header.buttonMyVoiceChageColor();
-        await app.home.header.clickLinkHeader(link)
+        await app.home.header.buttonBusinessChangeColor();
+        await app.home.header.buttonMyVoiceChangeColor();
+        await app.home.header.clickLinkHeader(link);
 
         //Assert
         await expect(app.home.page).toHaveURL(expectedUrl);
@@ -23,8 +23,8 @@ for (const { locatorName, expectedUrl } of testDataHeader.switchLanguages) {
         const app = new App(page);
         //Actions
         await app.home.open();
-        await app.home.openDropDownMenu();
-        await app.home.header.switchLanguages(locatorName)
+        await app.home.openDropDownMenuHome();
+        await app.home.header.switchLanguagesHome(locatorName)
         //Assert
         await expect(app.home.page).toHaveURL(expectedUrl);
         //await expect(app.businessPage.page.getByRole('list')).toHaveCount(7);
@@ -52,6 +52,14 @@ for (const { id, expectedUrl } of testDataHeader.headerAppLinks) {
         await expect(newPage).toHaveURL(expectedUrl);
     });
 }
+test('link More info', async ({ page }) => {
+    const app = new App(page);
+    await app.home.open();
+    await app.home.header.clickLinkMoreInfo();
+    //Assert
+    await expect(app.home.page).toHaveURL('https://dev.teleguard.com/en#new-feature');
+});
+
 
 
 
@@ -68,7 +76,7 @@ test('linkBetaTesting', async ({ page }) => {
 */
 
 //screenshots  ко всем скриншотам нужно добавить проверки
-test('ScreenshotsAndroid', async ({ page }) => {
+test('ScreenshotsAndroid', async ({ page }) => {//НЕ РАБОТАЕТ НУЖНО ПЕРЕДЕЛАТЬ
     const app = new App(page);
     await app.home.open();
     await app.home.ScreenshotsAndroid();
@@ -97,7 +105,7 @@ test('ScreenshotsAndroid', async ({ page }) => {
 
 });
 
-test('ScreenshotsIOS', async ({ page }) => {
+test('ScreenshotsIOS', async ({ page }) => {//НЕ РАБОТАЕТ НУЖНО ПЕРЕДЕЛАТЬ
     const app = new App(page);
     await app.home.open();
     await app.home.ScreenshotsIOS();
@@ -130,7 +138,7 @@ test('Check text appears on scroll', async ({ page }) => {
     await app.home.open();
     await app.home.checkElementsVisibleOnScroll();
 })
-test('ScreenshotsWindows', async ({ page }) => {
+test('ScreenshotsWindows', async ({ page }) => {//НЕ РАБОТАЕТ НУЖНО ПЕРЕДЕЛАТЬ
     const app = new App(page);
     await app.home.open();
     await app.home.ScreenshotsWindows();
@@ -183,13 +191,13 @@ test('Check FAQ questions closes', async ({ page }) => {
         await button.click();
     }
     for (const answer of await answers.all()) {
-        await expect(answer).toHaveJSProperty('hidden', false);
+        await expect(answer).toBeVisible();
     }
     for (const button of await questionButtons.all()) {
         await button.click();
     }
     for (const answer of await answers.all()) {
-        await expect(answer).toHaveJSProperty('hidden', true);
+        await expect(answer).toBeHidden();
     }
 });
 //Contact us
@@ -199,23 +207,11 @@ test('Contact us send form ', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.home.open();
-    await app.home.form.categoryDropDown.click();
-    await app.home.form.bugCategoryInDropdown.click();
-    await app.home.form.systemDropDown.click();
-    await app.home.form.IOScategoryInDropdown.click();
-    await app.home.form.deviceField.pressSequentially('7676');
-    await app.home.form.nameField.pressSequentially('test');
-    await app.home.form.emailField.pressSequentially('test@test.com');
-    await app.home.form.commentField.pressSequentially('TEST');
-
-    await app.home.form.agreementCheckbox.click();
-    //await app.home.form.buttonSendHomePageChageColor();
-    await app.home.form.sendButton.click();
-
+    await app.home.form.ContactUsSendForm();
     //Assert
     await expect(app.home.headingSuccess).toBeVisible();
     await expect(app.home.buttonStartPageSuccess).toBeVisible();
-    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/contact?succeed=true");
+    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/success");
     await expect(app.page).not.toHaveURL('https://dev.teleguard.com/en');
 });
 
@@ -224,22 +220,11 @@ test('Contact us send form 2 ', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.home.open();
-    await app.home.form.categoryDropDown.click();
-    await app.home.form.improvementCategoryInDropdown.click();
-    await app.home.form.systemDropDown.click();
-    await app.home.form.AndroidCategoryInDropdown.click();
-    await app.home.form.deviceField.pressSequentially('4343');
-    await app.home.form.nameField.pressSequentially('test android');
-    await app.home.form.emailField.pressSequentially('test@test.com');
-    await app.home.form.commentField.pressSequentially('TEST android');
-    await app.home.form.agreementCheckbox.click();
-    //await app.home.form.buttonSendHomePageChageColor();
-    await app.home.form.sendButton.click();
-
+    await app.home.form.ContactUsSendForm2();
     //Assert
     await expect(app.home.headingSuccess).toBeVisible();
     await expect(app.home.buttonStartPageSuccess).toBeVisible();
-    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/contact?succeed=true");
+    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/success");
     await expect(app.page).not.toHaveURL('https://dev.teleguard.com/en');
 });
 //variant 3
@@ -248,21 +233,11 @@ test('Contact us send form 3 ', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.home.open();
-    await app.home.form.categoryDropDown.click();
-    await app.home.form.otherCategoryInDropdown.click();
-    await app.home.form.systemDropDown.click();
-    await app.home.form.windowsCategoryInDropdown.click();
-    await app.home.form.deviceField.pressSequentially('2323');
-    await app.home.form.nameField.pressSequentially('test windows');
-    await app.home.form.emailField.pressSequentially('test@test.com');
-    await app.home.form.commentField.pressSequentially('TEST windows');
-    await app.home.form.agreementCheckbox.click();
-    //await app.home.form.buttonSendHomePageChageColor();
-    await app.home.form.sendButton.click();
+    await app.home.form.ContactUsSendForm3();
     //Assert
     await expect(app.home.headingSuccess).toBeVisible();
     await expect(app.home.buttonStartPageSuccess).toBeVisible();
-    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/contact?succeed=true");
+    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/success");
     await expect(app.page).not.toHaveURL('https://dev.teleguard.com/en');
 });
 

@@ -10,7 +10,7 @@ for (const {locatorName, expectedUrl} of testDataMyVoiseHeader.switchLanguagesMy
       //Actions
       await app.myVoice.openMyVoise();
       await app.myVoice.openDropDownMenu();
-      await app.myVoice.header.switchLanguages(locatorName)
+      await app.myVoice.header.switchLanguagesMyVoise(locatorName)
       //Assert
       await expect(app.myVoice.page).toHaveURL(expectedUrl);
       //await expect(app.businessPage.page.getByRole('list')).toHaveCount(7);

@@ -4,7 +4,8 @@ export default class Header{
         this.page = page;
         //Locators
         this.allLinks = (name) => this.page.getByRole('link', { name: name })
-        this.allLanguages = (name) => this.page.getByRole('link', { name: name }).first()
+        this.allLanguages = (name) => this.page.locator('li').filter({ hasText: name })
+        //this.allLanguages = (name) => this.page.getByText('link', { name: name }).first()
         //this.videoPlayer = this.page.locator('div.sizing-small.phase-ready.state-stopped')
         //this.videoPlayer = this.page.$('xpath=//*[@class="video-player"]')
         
@@ -16,7 +17,7 @@ export default class Header{
     async clickLinkHeader(name) {
        await this.allLinks(name).click()
     }
-    async switchLanguages(name) { 
+    async switchLanguagesBusiness(name) { 
         await this.allLanguages(name).click()
     }
 

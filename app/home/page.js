@@ -12,6 +12,7 @@ export default class Home {
         this.contentHome = new ContentHome(page);
 
         //Locators
+        
         this.headingSuccess = this.page.getByRole('heading', { name: 'Success!' })
         this.buttonStartPageSuccess = this.page.getByRole('link', { name: 'start page' })
         this.images = this.page.locator('.home image')
@@ -35,8 +36,8 @@ export default class Home {
             await this.page.reload();
         }
     }
-    async openDropDownMenu(){
-        const languageDropdownButton = await this.page.locator('//*[@id="header"]/div/nav/div[1]/a');
+    async openDropDownMenuHome(){
+        const languageDropdownButton = await this.page.locator('.languages');
         await languageDropdownButton.click();
     }
     /*
@@ -71,13 +72,7 @@ export default class Home {
             await this.page.locator('#app-android').click(),
         ])
     }
-    /*
 
-    async linkBetaTesting () {
-        
-        await this.page.getByRole('link', { name: 'Teleguard.com/beta-testing' }).click();
-    }
-*/
     async ScreenshotsAndroid () {
         
         await this.page.getByRole('link', { name: 'Android', exact: true }).click();
@@ -142,6 +137,15 @@ export default class Home {
         const [newPage] = await Promise.all([
             this.page.context().waitForEvent('page'),
             this.linkSwisscowsAG.click()
+        ]);
+        await newPage.waitForLoadState('domcontentloaded');
+        return newPage;
+
+    }
+    async clickLinkMoreInfo(){
+        const [newPage] = await Promise.all([
+            this.page.context().waitForEvent('page'),
+            this.linkMoreInfo.click()
         ]);
         await newPage.waitForLoadState('domcontentloaded');
         return newPage;

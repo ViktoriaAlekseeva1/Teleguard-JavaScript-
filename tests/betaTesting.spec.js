@@ -7,8 +7,8 @@ for (const { id, locatorName, expectedUrl} of testDataBetaTestingHeader.switchLa
       const app = new App(page);
       //Actions
       await app.betaTesting.openBetaTesting();
-      await app.betaTesting.openDropDownMenu();
-      await app.betaTesting.header.switchLanguages(locatorName)
+      await app.betaTesting.openDropDownMenuBetaTesting();
+      await app.betaTesting.switchLanguagesBetaTesting(locatorName)
       //Assert
       await expect(app.betaTesting.page).toHaveURL(expectedUrl);
       //await expect(app.businessPage.page.getByRole('list')).toHaveCount(7);
@@ -19,27 +19,29 @@ test('Contact us send form page Beta Testing ', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.betaTesting.openBetaTesting();
-    await app.betaTesting.form.fieldTeleguardID.pressSequentially('DQ2SABC4Q');
-    await app.betaTesting.form.fieldYourEmail.pressSequentially('test@test.com');
-    await app.betaTesting.form.fieldDevice.pressSequentially('test1234');
-    await app.betaTesting.form.fieldSystemVersion.pressSequentially('4.09.67');
-    await app.betaTesting.form.fieldCountry.pressSequentially('Country Test');
-    await app.betaTesting.form.fieldNumberOfTeleguard.pressSequentially('DQ2SABC$Q');
-    await app.betaTesting.form.fieldFullName.pressSequentially('Full Name Test');
-    await app.betaTesting.form.fieldComment.pressSequentially('TEST'); 
-    await app.betaTesting.form.agreementCheckboxBetaTesting.check();
-    await app.betaTesting.form.sendButtonBetaTesting.click();
+    await app.betaTesting.form.JoinTeleguardBetaTesting();
     //Assert
     await expect(app.betaTesting.form.headingSuccess).toBeVisible();
     await expect(app.betaTesting.form.buttonStartPageSuccess).toBeVisible();
-    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/beta-testing?succeed=true");
+    await expect(app.page).toHaveURL("https://dev.teleguard.com/en/success");
     await expect(app.page).not.toHaveURL('https://dev.teleguard.com/en');
 });
 test('Check link "privacy policy" on page Beta Testing', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.betaTesting.openBetaTesting();
-    await app.betaTesting.form.LinkPrivacyPolicyBetaTesting();
+    const newPage = await app.betaTesting.form.LinkPrivacyPolicyBetaTesting()
     //Assert
     await expect(app.page).not.toHaveURL('https://dev.teleguard.com/en');
-})
+    await expect(newPage).toHaveURL("https://dev.teleguard.com/en/privacy");
+});
+//LOGO
+test('Check logo on page Beta Testing', async ({ page }) => {
+    const app = new App(page);
+    //Actions
+    await app.betaTesting.openBetaTesting();
+    await app.betaTesting.header.logoBetaTesting();
+    //Assert
+    await expect(page).not.toHaveURL('https://dev.teleguard.com/en/beta-testing');
+    await expect(page).toHaveURL('https://dev.teleguard.com/en');
+});
