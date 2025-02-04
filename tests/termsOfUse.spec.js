@@ -16,11 +16,15 @@ test('Check link Teleguard on page TermsOfUse', async ({ page }) => {
     //Assert
     await expect(page).not.toHaveURL('https://dev.teleguard.com/en/termsofuse');
 });
+
+
+
 test ('Click link Info on page TermsOfUse', async ({ page }) => {
     const app = new App(page);
     await app.termsOfUse.openTermsOfUse();
     await app.termsOfUse.clickLinkInfoTermsOfUsePage();
     //Assert
     //expect(popup).toBeDefined();
-    await expect(page.locator('a[href="mailto:info@swisscows.com"]')).toHaveAttribute('href', 'mailto:info@swisscows.com');
+    await expect(app.termsOfUse.linkInfoTermOfUse).toHaveAttribute('href', 'mailto:info@swisscows.com');
+    
 });
