@@ -26,6 +26,11 @@ export default class Home {
         this.element5 = this.page.locator('div').filter({ hasText: 'No storage of user data on' }).nth(3)
         this.element6 = this.page.locator('div').filter({ hasText: 'No connection to a telephone' }).nth(3)
         this.element7 = this.page.locator('div').filter({ hasText: 'Practical, modern messenger' }).nth(2)
+        this.androidTabSlider = this.page.locator('.switch .item', { hasText: /Android/ })
+        this.windowsTabSlider = this.page.locator('.switch .item', { hasText: /^Windows$/ });
+        this.nextButtonSlider = this.page.locator('.slider button.next');
+        this.prevButtonSlider = this.page.locator('.slider button.prev');
+
 
     }
     async open() {
@@ -73,16 +78,129 @@ export default class Home {
         ])
     }
 
-    async ScreenshotsAndroid () {
-        
-        await this.page.getByRole('link', { name: 'Android', exact: true }).click();
-        await this.page.getByRole('button').nth(1).click();
+    async openAndroidTab() {
+        await this.androidTabSlider.click();
     }
-    async ScreenshotsIOS () {
-       
-        await this.page.getByRole('link', { name: 'IOS', exact: true }).click();
-        
+    async openWindowsTab() {
+        await this.windowsTabSlider.click();
     }
+
+    async expectSliderNavigationNext(value) {
+        for(let i = 0; i < 7; i++ ){
+            const activeSlide = this.page.locator('.slider .slide.is-visible.is-selected');
+            
+            //console.log(`✅ Слайд ${i + 1} прошел проверку`);
+            await expect(activeSlide).toHaveClass(/slide .*is-visible.*is-selected|slide .*is-selected.*is-visible/);
+            await this.nextButtonSlider.hover();
+            await this.nextButtonSlider.click();
+            await this.page.waitForFunction(() => {
+                return document.querySelector('.slider .slide.is-visible.is-selected') !== null;
+            });
+            //console.log(`➡️ Перешли к слайду ${i + 2}`);
+            await expect(activeSlide).toHaveClass(value);
+
+            //await this.slide.waitFor()
+            //await expect(this.slide.nth(i + 1)).toHaveClass(value);
+        }
+    }
+    async expectSliderNavigationPrev(value) {
+        for(let i = 6; i >= 0; i--){
+            const activeSlide = this.page.locator('.slider .slide.is-visible.is-selected');
+            
+            //console.log(`✅ Слайд ${i + 1} прошел проверку`);
+            await expect(activeSlide).toHaveClass(/slide .*is-visible.*is-selected|slide .*is-selected.*is-visible/);
+            await this.prevButtonSlider.hover();
+            await this.prevButtonSlider.click();
+            await this.page.waitForFunction(() => {
+                return document.querySelector('.slider .slide.is-visible.is-selected') !== null;
+            });
+            //console.log(`➡️ Перешли к слайду ${i}`);
+            await expect(activeSlide).toHaveClass(value);
+
+
+        }
+    }
+    async expectSliderNavigationNextWindows() {
+        for (let i = 0; i < 7; i++) {
+            const sliderContainer = this.page.locator('.slider__container');
+    
+            // Запоминаем текущий transform перед кликом
+            const prevTransform = await sliderContainer.evaluate(el => el.style.transform);
+            //console.log(`✅ Слайд ${i + 1} прошел проверку, transform: ${prevTransform}`);
+    
+            await this.nextButtonSlider.hover();
+            await this.nextButtonSlider.click();
+    
+            // Ждем изменения transform
+            await this.page.waitForFunction(prev => {
+                const container = document.querySelector('.slider__container');
+                return container && container.style.transform !== prev;
+            }, prevTransform);
+    
+            // Получаем новый transform
+            const newTransform = await sliderContainer.evaluate(el => el.style.transform);
+            //console.log(`➡️ Перешли к слайду ${i + 2}, transform: ${newTransform}`);
+        }
+    }
+    async expectSliderNavigationPrevWindows() {
+        for (let i = 6; i >= 0; i--) {
+            const sliderContainer = this.page.locator('.slider__container');
+    
+            // Запоминаем текущий transform перед кликом
+            const prevTransform = await sliderContainer.evaluate(el => el.style.transform);
+            //console.log(`✅ Слайд ${i + 1} прошел проверку, transform: ${prevTransform}`);
+    
+            await this.nextButtonSlider.hover();
+            await this.nextButtonSlider.click();
+    
+            // Ждем изменения transform
+            await this.page.waitForFunction(prev => {
+                const container = document.querySelector('.slider__container');
+                return container && container.style.transform !== prev;
+            }, prevTransform);
+    
+            // Получаем новый transform
+            const newTransform = await sliderContainer.evaluate(el => el.style.transform);
+            //console.log(`➡️ Перешли к слайду ${i + 2}, transform: ${newTransform}`);
+        }
+    }
+    
+    /*
+
+    async expectSliderNavigationPrev(value) {
+        for(let i = 6; 6 > i; i++ ){
+            await this.prevButtonSlider.hover();
+            await this.prevButtonSlider.click();
+            await this.slide.waitFor()
+            await expect(this.slide.nth(i - 1)).toHaveClass(value);
+        }
+    }
+        */
+    /*
+
+    async openIOSTab () {
+        //await this.iOSTabSlider.click();
+    }
+    async expectIOSSliderNavigationNext(value) {
+        for(let i = 0; i < 6; i++ ){
+            await this.nextButtonSlider.hover();
+            await this.nextButtonSlider.click();
+            await this.slide.waitFor()
+            await expect(this.slide.nth(i + 1)).toHaveClass(value);
+
+        }
+    }
+
+    async expectIOSSliderNavigationPrev(value) {
+        for(let i = 6; 6 > i; i++ ){
+            await this.prevButtonSlider.hover();
+            await this.prevButtonSlider.click();
+            await this.slide.waitFor()
+            await expect(this.slide.nth(i - 1)).toHaveClass(value);
+        }
+    }
+        */
+
     async ScreenshotsWindows () {
       
         await this.page.getByRole('link', { name: 'Windows', exact: true }).click();

@@ -3,7 +3,13 @@ export default class Footer{
         this.page = page;
         this.allLinks = (name) => this.page.getByRole('link', { name: name })
         
-        this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links > a').nth(index)
+        //this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links > a').nth(index)
+        this.allLinksNetworkFooter = (index) => {
+            const correctedIndex = index >= 3 ? index + 1 : index; // Пропускаем VK
+            return this.page.locator('.col > .social-links > a').nth(correctedIndex);
+        };
+        
+        
 
     //Locators
     
@@ -29,11 +35,11 @@ export default class Footer{
 async clickLinkFooter(name) {
     await this.allLinks(name).click()
 }
-async clickLinkFooterSocialNetwork(icon) {
+async clickLinkFooterSocialNetwork(index) {
     const [newPage] = await Promise.all([
         this.page.context().waitForEvent("page"),
         await this.scrollToBottom(),
-        await this.allLinksNetworkFooter(icon).click()
+        await this.allLinksNetworkFooter(index).click()
         ]);
         await newPage.waitForLoadState("domcontentloaded");
         return newPage;

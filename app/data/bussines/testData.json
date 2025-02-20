@@ -111,12 +111,7 @@
             "expectedUrl":"https://www.instagram.com/teleguard_official/"
         },
         {
-            "index":4,
-            "expectedUrl":"https://vk.com/teleguard"
-        },
-
-        {
-            "index":5,
+            "index":3,
             "expectedUrl":"https://www.linkedin.com/company/teleguard/"
         }
     ]

@@ -40,7 +40,7 @@ test('Check logo on page Beta Testing', async ({ page }) => {
     const app = new App(page);
     //Actions
     await app.betaTesting.openBetaTesting();
-    await app.betaTesting.header.logoBetaTesting();
+    await app.betaTesting.logoBetaTesting();
     //Assert
     await expect(page).not.toHaveURL('https://dev.teleguard.com/en/beta-testing');
     await expect(page).toHaveURL('https://dev.teleguard.com/en');

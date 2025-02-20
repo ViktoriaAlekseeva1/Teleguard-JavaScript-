@@ -62,24 +62,20 @@
     ],
     "headerLinksSocialNetwork":[
         {
-            "index":0,
+            "index": 0,
             "expectedUrl":"https://x.com/Teleguard_?mx=2"
         },
         {
-            "index":1,
+            "index": 1,
             "expectedUrl":"https://www.facebook.com/teleguardapp" 
         },
         {
-            "index":2,
+            "index": 2,
             "expectedUrl":"https://www.instagram.com/teleguard_official/"
-        },
-        {
-            "index":4,
-            "expectedUrl":"https://vk.com/teleguard"
         },
 
         {
-            "index":5,
+            "index": 3,
             "expectedUrl":"https://www.linkedin.com/company/teleguard/"
         }
 

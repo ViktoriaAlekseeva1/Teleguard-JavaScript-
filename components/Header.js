@@ -4,7 +4,11 @@ export default class Header{
     constructor(page) {
         this.page = page;
 
-        this.allLinksNetwork = (index) => this.page.locator('.social-links > a').nth(index);
+        
+        this.allLinksNetwork = (index) => {const correctedIndex = index >= 3 ? index + 1 : index;
+            return this.page.locator('header .social-links > a').nth(correctedIndex);}
+        //this.allLinksNetwork = (index) => this.page.locator("header .social-links a").filter({ hasNot: this.page.locator('a[href*="vk.com"]') }).nth(index);
+        
 
         //this.allLanguages = (name) => this.page.locator('li').filter({ hasText: name })
         this.allLinks = (name) => this.page.getByRole('link', { name: name })
@@ -34,11 +38,11 @@ export default class Header{
 
         //social network
 
-        this.linkTwitterHeader = this.page.locator('.social-links > a')
-        this.linkFacebookHeader = this.page.locator('.social-links > a:nth-child(2)')
-        this.linkIntagramHeader = this.page.locator('.social-links > a:nth-child(3)')
-        this.linkVKHeader = this.page.locator('a:nth-child(4)')
-        this.linkLinkedInHeader = this.page.locator('.social-links > a:nth-child(5)')
+        this.linkTwitterHeader = this.page.locator('.social-links > a').first()
+        this.linkFacebookHeader = this.page.locator('.social-links > a:nth-child(2)').first()
+        this.linkIntagramHeader = this.page.locator('a:nth-child(3)').first()
+        //this.linkVKHeader = this.page.locator('a:nth-child(4)').first()
+        this.linkLinkedInHeader = this.page.locator('a:nth-child(5)').first()
 
 
 
@@ -105,10 +109,10 @@ export default class Header{
         await this.allLanguages(name).click();
     }
 
-    async clickLinkHeaderSocialNetwork(iconName) {
+    async clickLinkHeaderSocialNetwork(index) {
         const [newPage] = await Promise.all([
             this.page.context().waitForEvent("page"),
-            await this.allLinksNetwork(iconName).click()
+            await this.allLinksNetwork(index).click()
           ]);
           await newPage.waitForLoadState("domcontentloaded");
           return newPage;

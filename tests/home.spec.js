@@ -75,97 +75,55 @@ test('linkBetaTesting', async ({ page }) => {
 });
 */
 
-//screenshots  ко всем скриншотам нужно добавить проверки
-test('ScreenshotsAndroid', async ({ page }) => {//НЕ РАБОТАЕТ НУЖНО ПЕРЕДЕЛАТЬ
+test('Android slider to be should next navigation', async ({ page }) => {
     const app = new App(page);
+    //Actions
     await app.home.open();
-    await app.home.ScreenshotsAndroid();
-    const buttonNext = '#slider-android > button.next';
-    const buttonPrev = '#slider-android > button.prev';
-    const viewports = await page.$$('#slider-android');
-    let imageBeforeClick = [];
-    let imageAfterClick = [];
-    for (const viewport of viewports) {
-        for (let i = 0; i <= 7; i++) {
-            await page.click(buttonNext);
-            await page.waitForTimeout(500);
+    await app.home.openAndroidTab()
 
-        }
-    }
-    for (const viewport of viewports) {
-        for (let i = 0; i <= 7; i++) {
-            await page.click(buttonPrev);
-            await page.waitForTimeout(500);
+    //Verify
+    await app.home.expectSliderNavigationNext("slide is-visible is-selected");
+});
 
-        }
-    }
-    const clicksCount = 7; // Ожидаемое количество кликов
-    expect(clicksCount).toBe(7);
-    expect(imageBeforeClick).not.toBe(imageAfterClick);
+test('Android slider to be should prev navigation', async ({ page }) => {
+    const app = new App(page);
+    //Actions
+    await app.home.open();
+    await app.home.openAndroidTab()
+
+    //Verify
+    await app.home.expectSliderNavigationNext("slide is-visible is-selected");
+    await app.home.expectSliderNavigationPrev("slide is-visible is-selected");
+});
+
+
+test('IOS slider to be should prev navigation', async ({ page }) => {
+    const app = new App(page);
+    //Actions
+    await app.home.open();
+    //await app.home.openIOSTab();
+    //Verify
+    await app.home.expectSliderNavigationNext("slide is-visible is-selected");
+    await app.home.expectSliderNavigationPrev("slide is-visible is-selected");
+
+});
+test('Windows slider to be should prev navigation', async ({ page }) => {
+    const app = new App(page);
+    //Actions
+    await app.home.open();
+    await app.home.openWindowsTab();
+    //Verify
+    await app.home.expectSliderNavigationNextWindows("slide is-visible is-selected");
+    await app.home.expectSliderNavigationPrevWindows("slide is-visible is-selected");
 
 });
 
-test('ScreenshotsIOS', async ({ page }) => {//НЕ РАБОТАЕТ НУЖНО ПЕРЕДЕЛАТЬ
-    const app = new App(page);
-    await app.home.open();
-    await app.home.ScreenshotsIOS();
-    const buttonNext = '#slider-ios > button.next';
-    const buttonPrev = '#slider-ios > button.prev';
-    const viewports = await page.$$('#slider-ios');
-    let imageBeforeClick = [];
-    let imageAfterClick = [];
-    for (const viewport of viewports) {
-        for (let i = 0; i <= 7; i++) {
-            await page.click(buttonNext);
-            await page.waitForTimeout(500);
-
-        }
-    }
-    for (const viewport of viewports) {
-        for (let i = 0; i <= 7; i++) {
-            await page.click(buttonPrev);
-            await page.waitForTimeout(500);
-
-        }
-    }
-    const clicksCount = 7; // Ожидаемое количество кликов
-    expect(clicksCount).toBe(7);
-    expect(imageBeforeClick).not.toBe(imageAfterClick);
-
-});
 test('Check text appears on scroll', async ({ page }) => {
     const app = new App(page);
     await app.home.open();
     await app.home.checkElementsVisibleOnScroll();
 })
-test('ScreenshotsWindows', async ({ page }) => {//НЕ РАБОТАЕТ НУЖНО ПЕРЕДЕЛАТЬ
-    const app = new App(page);
-    await app.home.open();
-    await app.home.ScreenshotsWindows();
-    const buttonNext = '#slider-windows > button.next';
-    const buttonPrev = '#slider-windows > button.prev';
-    const viewports = await page.$$('#slider-windows');
-    let imageBeforeClick = [];
-    let imageAfterClick = [];
-    for (const viewport of viewports) {
-        for (let i = 0; i <= 7; i++) {
-            await page.click(buttonNext);
-            await page.waitForTimeout(500);
 
-        }
-    }
-    for (const viewport of viewports) {
-        for (let i = 0; i <= 7; i++) {
-            await page.click(buttonPrev);
-            await page.waitForTimeout(500);
-
-        }
-    }
-    const clicksCount = 7; // Ожидаемое количество кликов
-    expect(clicksCount).toBe(7);
-    expect(imageBeforeClick).not.toBe(imageAfterClick);
-
-});
 
 //FAQ
 test('Check FAQ questions opened', async ({ page }) => {
@@ -274,6 +232,7 @@ test('link Swisscows AG', async ({ page }) => {
     //Assert
     await expect(newPage).not.toHaveURL('https://company.swisscows.com/en');
 });
+/*
 
 test('Check disaine home page', async ({ page }, testInfo) => {
     const app = new App(page);

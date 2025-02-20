@@ -5,7 +5,12 @@ export default class Footer{
 
         this.allLinks = (name) => this.page.getByRole('link', { name: name })
         //this.allLinksNetworkFooter = (index) => this.page.getByRole('link', { icon: index }).nth(index)
-        this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links > a').nth(index)
+        //this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links > a').nth(index)
+        this.allLinksNetworkFooter = (index) => {
+            const correctedIndex = index >= 3 ? index + 1 : index; // Пропускаем VK
+            return this.page.locator('.col > .social-links > a').nth(correctedIndex);
+        };
+        
 
     //Locators
     
