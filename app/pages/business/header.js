@@ -14,12 +14,14 @@ export default class Header{
         
     }
 
+
     async clickLinkHeader(name) {
        await this.allLinks(name).click()
     }
     async switchLanguagesBusiness(name) { 
         await this.allLanguages(name).click()
     }
+
 
     async logoBusinessPage () {
         await this.page.getByRole('link', { name: 'logo' }).click();

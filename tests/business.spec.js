@@ -27,6 +27,7 @@ for (const {locatorName, expectedUrl} of testData.switchLanguages) {
       //await expect(app.businessPage.page.getByRole('list')).toHaveCount(7);
     });
   }
+
   
   for (const {locatorNameBussines, expectedUrl} of testData.linksFooter) {
     test(`Check links ${locatorNameBussines} in footer in Business page`, async ({ page }) => {//links footer

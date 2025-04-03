@@ -63,7 +63,7 @@
     "headerLinksSocialNetwork":[
         {
             "index": 0,
-            "expectedUrl":"https://x.com/Teleguard_?mx=2"
+            "expectedUrl":"https://x.com/Teleguard_"
         },
         {
             "index": 1,

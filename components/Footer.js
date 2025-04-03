@@ -3,7 +3,9 @@ import fs from'fs';
 export default class Footer{
     constructor(page) {
         this.page = page;
-        this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links > a').nth(index)
+        // this.allLinksNetworkFooter = (index) => this.page.locator('.col > .social-links > a').nth(index)
+        this.allLinksNetworkFooter = (index) => {const correctedIndex = index >= 3 ? index + 1 : index;
+            return this.page.locator('.col > .social-links > a').nth(correctedIndex);}
         this.allLinksFooter = (link) => this.page.getByRole('link', { name: link, exact: true });
     
 
@@ -39,6 +41,7 @@ export default class Footer{
           return newPage;
   
     }
+
  
     /*
         //links footer
