@@ -13,7 +13,7 @@ export default class Form {
         this.nameField = this.page.getByPlaceholder('Your Name *')
         this.emailField = this.page.getByPlaceholder('Your Email *')
         this.commentField = this.page.getByPlaceholder('Your Comments *')
-        this.agreementCheckbox = this.page.getByLabel('I agree that my data will be')//('//*[@class="agreement"]/p')     //('//*[@id="Agreement"]')
+        this.agreementCheckbox = this.page.locator('input[name="agreement"]')//getByLabel('I agree that my data will be')//('//*[@class="agreement"]/p')     //('//*[@id="Agreement"]')
         this.sendButton = this.page.getByRole('button', { name: 'send' })
 
         this.improvementCategoryInDropdown = this.page.getByLabel('Propose an improvement')

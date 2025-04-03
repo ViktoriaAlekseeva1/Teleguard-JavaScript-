@@ -13,7 +13,7 @@ export default class Form{
     this.fieldZipCodeCity = this.page.locator('//input[@placeholder="Zip code, city *"]')
     this.fieldPhoneBusiness = this.page.locator('//input[@placeholder="Phone"]')
     this.fieldCommentBusiness = this.page.locator('//textarea[@name="comments"]')
-    this.agreementCheckbox = this.page.locator('//input[@name="agreement"]')
+    this.agreementCheckbox = this.page.locator('input[name="agreement"]')
     this.sendButton = this.page.locator('//button[@ type="submit"]')
 
     this.headingSuccess = this.page.getByRole('heading', { name: 'Success!' })

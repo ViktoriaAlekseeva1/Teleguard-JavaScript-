@@ -12,7 +12,7 @@ export default class Form{
     this.fieldNumberOfTeleguard = this.page.locator('//input[@placeholder="Number of TeleGuard contacts (approx.)"]')
     this.fieldFullName = this.page.locator('//input[@placeholder="Full Name"]')
     this.fieldComment = this.page.locator('//textarea[@name="comments"]') 
-    this.agreementCheckboxBetaTesting = this.page.locator('//input[@type="checkbox"]')
+    this.agreementCheckboxBetaTesting = this.page.locator('input[name="agreement"]')
     this.sendButtonBetaTesting = this.page.locator('//button[@type="submit"]')
     this.linkPrivacyPolicy = this.page.locator('//*[@class="agreement"]/p/a')
 
