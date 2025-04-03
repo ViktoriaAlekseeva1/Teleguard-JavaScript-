@@ -32,7 +32,7 @@ export default class Form{
         await this.fieldNumberOfTeleguard.fill('DQ2SABC$Q');
         await this.fieldFullName.fill('Full Name Test');
         await this.fieldComment.fill('TEST');
-        await this.agreementCheckboxBetaTesting.check();
+        await this.agreementCheckboxBetaTesting.click();
         await this.sendButtonBetaTesting.click();
     }
     

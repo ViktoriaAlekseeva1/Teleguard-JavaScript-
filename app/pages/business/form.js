@@ -37,7 +37,7 @@ export default class Form{
         await this.fieldZipCodeCity.fill('343456');
         await this.fieldPhoneBusiness.fill('0678964587');
         await this.fieldCommentBusiness.fill('Test page Business Basic'); 
-        await this.agreementCheckbox.check();
+        await this.agreementCheckbox.click();
         await this.sendButton.click();
     }
     async ContactUsBusiness2 () {
@@ -55,7 +55,7 @@ export default class Form{
         await this.fieldZipCodeCity.fill('343456');
         await this.fieldPhoneBusiness.fill('0678964587');
         await this.fieldCommentBusiness.fill('Test page Business Enterprise'); 
-        await this.agreementCheckbox.check();
+        await this.agreementCheckbox.click();
         await this.sendButton.click();
     }
     async ContactUsBusiness3(){
@@ -73,7 +73,7 @@ export default class Form{
         await this.fieldZipCodeCity.pressSequentially('343456');
         await this.fieldPhoneBusiness.pressSequentially('0678964587');
         await this.fieldCommentBusiness.pressSequentially('Test page Business Pro'); 
-        await this.agreementCheckbox.check();
+        await this.agreementCheckbox.click();
         await this.sendButton.click();
     }
     async ContactUsBusiness4WithoutPhone() {
@@ -90,7 +90,7 @@ export default class Form{
         await this.fieldStreetHouseNumber.pressSequentially('Street 21');
         await this.fieldZipCodeCity.pressSequentially('343456');
         await this.fieldCommentBusiness.pressSequentially('Test page Business Pro'); 
-        await this.agreementCheckbox.check();
+        await this.agreementCheckbox.click();
         await this.sendButton.click();
     }
     async LinkDataProtection(){
